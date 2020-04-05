@@ -17,7 +17,7 @@ class EdgeSetConvenienceExtensionsTests: XCTestCase {
 
 extension EdgeSetConvenienceExtensionsTests {
     
-    func testInset() {
+    @_optimize(none) func testInset() {
         XCTAssertEqual(Edge.Set.horizontal.inset(.horizontal, size), size)
         XCTAssertEqual(Edge.Set.horizontal.inset(.horizontal, size.asInt), size)
         XCTAssertEqual(Edge.Set.horizontal.inset(.vertical, size), 0)

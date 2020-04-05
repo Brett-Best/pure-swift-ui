@@ -7,19 +7,19 @@
 
 public extension CGVector {
     
-    init(_ size: CGFloat) {
+    @_optimize(none) init(_ size: CGFloat) {
         self.init(size, size)
     }
     
-    init<T: UINumericType>(_ size: T) {
+    @_optimize(none) init<T: UINumericType>(_ size: T) {
         self.init(size.asCGFloat)
     }
     
-    init(_ dx: CGFloat, _ dy: CGFloat) {
+    @_optimize(none) init(_ dx: CGFloat, _ dy: CGFloat) {
         self.init(dx: dx, dy: dy)
     }
 
-    init<TX: UINumericType, TY: UINumericType>(_ dx: TX, _ dy: TY) {
+    @_optimize(none) init<TX: UINumericType, TY: UINumericType>(_ dx: TX, _ dy: TY) {
         self.init(dx: dx.asCGFloat, dy: dy.asCGFloat)
     }
 
@@ -71,23 +71,23 @@ public extension CGVector {
         max(dx, dy)
     }
     
-    func scaled<T: UINumericType>(_ scale: T) -> CGSize {
+    @_optimize(none) func scaled<T: UINumericType>(_ scale: T) -> CGSize {
         scaled(.square(scale))
     }
     
-    func scaled(_ scale: CGSize) -> CGSize {
+    @_optimize(none) func scaled(_ scale: CGSize) -> CGSize {
         .init(widthScaled(scale.width), heightScaled(scale.height))
     }
 
-    func widthScaled<T: UINumericType>(_ scale: T) -> CGFloat {
+    @_optimize(none) func widthScaled<T: UINumericType>(_ scale: T) -> CGFloat {
         dx * scale.asCGFloat
     }
 
-    func heightScaled<T: UINumericType>(_ scale: T) -> CGFloat {
+    @_optimize(none) func heightScaled<T: UINumericType>(_ scale: T) -> CGFloat {
         dy * scale.asCGFloat
     }
 
-    func clamped(from: CGFloat, to: CGFloat) -> CGVector {
+    @_optimize(none) func clamped(from: CGFloat, to: CGFloat) -> CGVector {
         .init(dx.clamped(from: from, to: to), dy.clamped(from: from, to: to))
     }
 }
@@ -96,19 +96,19 @@ public extension CGVector {
 
 public extension CGVector {
     
-    static func dx<T: UINumericType>(_ dx: T) -> CGVector {
+    @_optimize(none) static func dx<T: UINumericType>(_ dx: T) -> CGVector {
         .init(dx, 0)
     }
     
-    static func dy<T: UINumericType>(_ dy: T) -> CGVector {
+    @_optimize(none) static func dy<T: UINumericType>(_ dy: T) -> CGVector {
         .init(0, dy)
     }
     
-    static func vector<TDX: UINumericType, TDY: UINumericType>(_ dx: TDX, _ dy: TDY) -> CGVector {
+    @_optimize(none) static func vector<TDX: UINumericType, TDY: UINumericType>(_ dx: TDX, _ dy: TDY) -> CGVector {
         .init(dx, dy)
     }
     
-    static func vector<T: UINumericType>(_ size: T) -> CGVector {
+    @_optimize(none) static func vector<T: UINumericType>(_ size: T) -> CGVector {
         .init(size)
     }
 }
@@ -117,11 +117,11 @@ public extension CGVector {
 
 public extension CGVector {
     
-    static func -(lhs: CGVector, rhs: CGVector) -> CGVector {
+    @_optimize(none) static func -(lhs: CGVector, rhs: CGVector) -> CGVector {
         .init(lhs.dx - rhs.dx, lhs.dy - rhs.dy)
     }
 
-    static func +(lhs: CGVector, rhs: CGVector) -> CGVector {
+    @_optimize(none) static func +(lhs: CGVector, rhs: CGVector) -> CGVector {
         .init(lhs.dx + rhs.dx, lhs.dy + rhs.dy)
     }
 }

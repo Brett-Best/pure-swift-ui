@@ -9,19 +9,19 @@ import CoreGraphics
 
 public extension CGSize {
     
-    init(_ size: CGFloat) {
+    @_optimize(none) init(_ size: CGFloat) {
         self.init(size, size)
     }
     
-    init<T: UINumericType>(_ size: T) {
+    @_optimize(none) init<T: UINumericType>(_ size: T) {
         self.init(size, size)
     }
     
-    init(_ width: CGFloat, _ height: CGFloat) {
+    @_optimize(none) init(_ width: CGFloat, _ height: CGFloat) {
         self.init(width: width, height: height)
     }
     
-    init<TW: UINumericType, TH: UINumericType>(_ width: TW, _ height: TH) {
+    @_optimize(none) init<TW: UINumericType, TH: UINumericType>(_ width: TW, _ height: TH) {
         self.init(width: width.asCGFloat, height: height.asCGFloat)
     }
 
@@ -73,27 +73,27 @@ public extension CGSize {
         max(width, height)
     }
     
-    func scaled<T: UINumericType>(_ scale: T) -> CGSize {
+    @_optimize(none) func scaled<T: UINumericType>(_ scale: T) -> CGSize {
         scaled(.square(scale))
     }
     
-    func scaled(_ scale: CGSize) -> CGSize {
+    @_optimize(none) func scaled(_ scale: CGSize) -> CGSize {
         scaled(scale.width, scale.height)
     }
     
-    func scaled<TW: UINumericType, TH: UINumericType>(_ widthScale: TW, _ heightScale: TH) -> CGSize {
+    @_optimize(none) func scaled<TW: UINumericType, TH: UINumericType>(_ widthScale: TW, _ heightScale: TH) -> CGSize {
         .init(widthScaled(widthScale), heightScaled(heightScale))
     }
     
-    func widthScaled<T: UINumericType>(_ scale: T) -> CGFloat {
+    @_optimize(none) func widthScaled<T: UINumericType>(_ scale: T) -> CGFloat {
         width * scale.asCGFloat
     }
     
-    func heightScaled<T: UINumericType>(_ scale: T) -> CGFloat {
+    @_optimize(none) func heightScaled<T: UINumericType>(_ scale: T) -> CGFloat {
         height * scale.asCGFloat
     }
     
-    func clamped(from: CGFloat, to: CGFloat) -> CGSize {
+    @_optimize(none) func clamped(from: CGFloat, to: CGFloat) -> CGSize {
         .init(self.width.clamped(from: from, to: to), self.height.clamped(from: from, to: to))
     }
 }
@@ -102,11 +102,11 @@ public extension CGSize {
 
 public extension CGSize {
     
-    static func -(lhs: CGSize, rhs: CGSize) -> CGSize {
+    @_optimize(none) static func -(lhs: CGSize, rhs: CGSize) -> CGSize {
         .init(lhs.width - rhs.width, lhs.height - rhs.height)
     }
     
-    static func +(lhs: CGSize, rhs: CGSize) -> CGSize {
+    @_optimize(none) static func +(lhs: CGSize, rhs: CGSize) -> CGSize {
         .init(lhs.width + rhs.width, lhs.height + rhs.height)
     }
 }
@@ -115,23 +115,23 @@ public extension CGSize {
 
 public extension CGSize {
     
-    static func square<T: UINumericType>(_ size: T) -> CGSize {
+    @_optimize(none) static func square<T: UINumericType>(_ size: T) -> CGSize {
         .init(size.asCGFloat)
     }
     
-    static func width<T: UINumericType>(_ width: T) -> CGSize {
+    @_optimize(none) static func width<T: UINumericType>(_ width: T) -> CGSize {
         .init(width, 0)
     }
     
-    static func height<T: UINumericType>(_ height: T) -> CGSize {
+    @_optimize(none) static func height<T: UINumericType>(_ height: T) -> CGSize {
         .init(0, height)
     }
     
-    static func size<TW: UINumericType, TH: UINumericType>(_ width: TW, _ height: TH) -> CGSize {
+    @_optimize(none) static func size<TW: UINumericType, TH: UINumericType>(_ width: TW, _ height: TH) -> CGSize {
         .init(width, height)
     }
     
-    static func size<T: UINumericType>(_ size: T) -> CGSize {
+    @_optimize(none) static func size<T: UINumericType>(_ size: T) -> CGSize {
         .square(size)
     }
 }
@@ -140,7 +140,7 @@ public extension CGSize {
 
 public extension CGSize {
     
-    func map(from: CGRect, to: CGRect) -> CGSize {
+    @_optimize(none) func map(from: CGRect, to: CGRect) -> CGSize {
         let relativeOffsetWidth = from.width == 0 ? width : width / from.width
         let relativeOffsetHeight = from.height == 0 ? height : height / from.height
         

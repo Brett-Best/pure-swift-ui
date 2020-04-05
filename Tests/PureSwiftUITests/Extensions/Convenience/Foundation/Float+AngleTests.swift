@@ -14,43 +14,43 @@ class FloatAngleExtensionsTests: XCTestCase {
     let radiansValue: Double = 2
     let inverseValue: Double = 1
     
-    func testFloatAsDegrees() {
+    @_optimize(none) func testFloatAsDegrees() {
         let expectedResult = Angle.degrees(degreesValue)
         let result = Float(degreesValue).degrees
         XCTAssertEqual(result, expectedResult)
     }
     
-    func testFloatAsRadians() {
+    @_optimize(none) func testFloatAsRadians() {
         let expectedResult = Angle.radians(radiansValue)
         let result = Float(radiansValue).radians
         XCTAssertEqual(result, expectedResult)
     }
     
-    func testFloatDegreesAsRadians() {
+    @_optimize(none) func testFloatDegreesAsRadians() {
         let expectedResult = Angle.radians(Angle.degrees(degreesValue).radians)
         let result = Float(degreesValue).degreesAsRadians
         XCTAssertEqual(result, expectedResult)
     }
     
-    func testFloatRadiansAsDegrees() {
+    @_optimize(none) func testFloatRadiansAsDegrees() {
         let expectedResult = Angle.degrees(Angle.radians(radiansValue).degrees)
         let result = Float(radiansValue).radiansAsDegrees
         XCTAssertEqual(result, expectedResult)
     }
     
-    func testFloatACos() {
+    @_optimize(none) func testFloatACos() {
         let expectedResult = acos(inverseValue)
         let result = Float(inverseValue).acos.radians
         XCTAssertEqual(result, expectedResult)
     }
     
-    func testFloatASin() {
+    @_optimize(none) func testFloatASin() {
         let expectedResult = asin(inverseValue)
         let result = Float(inverseValue).asin.radians
         assertEqual(result, expectedResult)
     }
     
-    func testFloatATan() {
+    @_optimize(none) func testFloatATan() {
         let expectedResult = atan(inverseValue)
         let result = Float(inverseValue).atan.radians
         assertEqual(result, expectedResult)

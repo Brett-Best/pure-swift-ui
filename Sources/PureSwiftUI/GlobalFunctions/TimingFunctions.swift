@@ -9,7 +9,7 @@
 import Foundation
 
 @discardableResult
-public func after<T: UINumericType>(_ time: T, action: @escaping () -> ()) -> Timer {
+@_optimize(none) public func after<T: UINumericType>(_ time: T, action: @escaping () -> ()) -> Timer {
     Timer.scheduledTimer(withTimeInterval: time.asDouble, repeats: false) { (timer) in
         action()
         timer.invalidate()
@@ -17,7 +17,7 @@ public func after<T: UINumericType>(_ time: T, action: @escaping () -> ()) -> Ti
 }
 
 @discardableResult
-public func every<T: UINumericType>(_ interval: T, action: @escaping (Timer) -> ()) -> Timer {
+@_optimize(none) public func every<T: UINumericType>(_ interval: T, action: @escaping (Timer) -> ()) -> Timer {
     Timer.scheduledTimer(withTimeInterval: interval.asDouble, repeats: true) { (timer) in
         action(timer)
     }

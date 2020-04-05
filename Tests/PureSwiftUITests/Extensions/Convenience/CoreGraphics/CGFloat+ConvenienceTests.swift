@@ -10,7 +10,7 @@ import XCTest
 
 class CGFloatConvenienceExtensionsTests: XCTestCase {
     
-    func testRandom() {
+    @_optimize(none) func testRandom() {
         
         let value: CGFloat = 10
         

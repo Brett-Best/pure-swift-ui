@@ -10,7 +10,7 @@ import XCTest
 
 class ComparibleConvenienceExtensionsTests: XCTestCase {
     
-    func testClamped() {
+    @_optimize(none) func testClamped() {
 
         XCTAssertEqual(1, 2.clamped(from: 0, to: 1))
         XCTAssertEqual(4, 3.clamped(from: 4, to: 10))

@@ -10,14 +10,14 @@ import XCTest
 
 class FloatConvenienceExtensionsTests: XCTestCase {
     
-    func testRepresentableAs() {
+    @_optimize(none) func testRepresentableAs() {
         XCTAssertEqual(Int(1).asFloat, Float(1))
         XCTAssertEqual(CGFloat(1).asFloat, Float(1))
         XCTAssertEqual(Double(1).asFloat, Float(1))
         XCTAssertEqual(Float(1).asFloat, Float(1))
     }
     
-    func testRandom() {
+    @_optimize(none) func testRandom() {
         
         let value: Float = 10
         

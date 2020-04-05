@@ -9,7 +9,7 @@ import CoreGraphics
 
 public extension Double {
     
-    func random() -> Double {
+    @_optimize(none) func random() -> Double {
         self * Double.random(in: 0...1)
     }
 }

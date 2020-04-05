@@ -17,7 +17,7 @@ class CollectionConvenienceTests: XCTestCase {
 
 extension CollectionConvenienceTests {
     
-    func testIsNotEmpty() {
+    @_optimize(none) func testIsNotEmpty() {
         XCTAssertTrue([1].isNotEmpty)
     }
 }

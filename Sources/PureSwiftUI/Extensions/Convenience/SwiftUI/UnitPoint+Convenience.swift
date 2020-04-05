@@ -10,7 +10,7 @@ import Foundation
 
 public extension UnitPoint {
     
-    init<TX: UINumericType, TY: UINumericType>(_ x: TX, _ y: TY) {
+    @_optimize(none) init<TX: UINumericType, TY: UINumericType>(_ x: TX, _ y: TY) {
         self.init(x: x.asCGFloat, y: y.asCGFloat)
     }
     
@@ -18,7 +18,7 @@ public extension UnitPoint {
         return CGPoint(x, y)
     }
     
-    func inverted() -> UnitPoint {
+    @_optimize(none) func inverted() -> UnitPoint {
         UnitPoint(1 - x, 1 - y)
     }
 }

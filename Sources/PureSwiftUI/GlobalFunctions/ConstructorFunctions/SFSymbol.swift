@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-public func SFSymbol(_ sfSymbol: SFSymbolName) -> Image {
+@_optimize(none) public func SFSymbol(_ sfSymbol: SFSymbolName) -> Image {
     Image(systemName: sfSymbol.rawValue)
 }
 

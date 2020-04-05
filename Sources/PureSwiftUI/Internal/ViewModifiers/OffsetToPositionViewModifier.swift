@@ -9,12 +9,12 @@
 import SwiftUI
 
 protocol OffsetForPositionProvider {
-    func offsetPosition(center: CGPoint?, relativeTo: CGPoint, anchorOffset: CGSize) -> CGPoint
+    @_optimize(none) func offsetPosition(center: CGPoint?, relativeTo: CGPoint, anchorOffset: CGSize) -> CGPoint
 }
 
 struct XOffsetPositionProvider: OffsetForPositionProvider {
     
-    func offsetPosition(center: CGPoint?, relativeTo: CGPoint, anchorOffset: CGSize) -> CGPoint {
+    @_optimize(none) func offsetPosition(center: CGPoint?, relativeTo: CGPoint, anchorOffset: CGSize) -> CGPoint {
         if let center = center {
             return .init(relativeTo.x - center.x + anchorOffset.width, 0)
         }
@@ -24,7 +24,7 @@ struct XOffsetPositionProvider: OffsetForPositionProvider {
 
 struct YOffsetPositionProvider: OffsetForPositionProvider {
     
-    func offsetPosition(center: CGPoint?, relativeTo: CGPoint, anchorOffset: CGSize) -> CGPoint {
+    @_optimize(none) func offsetPosition(center: CGPoint?, relativeTo: CGPoint, anchorOffset: CGSize) -> CGPoint {
         if let center = center {
             return .init(0, relativeTo.y - center.y + anchorOffset.height)
         }
@@ -34,7 +34,7 @@ struct YOffsetPositionProvider: OffsetForPositionProvider {
 
 struct OffsetPositionProvider: OffsetForPositionProvider {
     
-    func offsetPosition(center: CGPoint?, relativeTo: CGPoint, anchorOffset: CGSize) -> CGPoint {
+    @_optimize(none) func offsetPosition(center: CGPoint?, relativeTo: CGPoint, anchorOffset: CGSize) -> CGPoint {
         if let center = center {
             return .init(relativeTo.x - center.x + anchorOffset.width, relativeTo.y - center.y + anchorOffset.height)
         }
@@ -81,7 +81,7 @@ struct OffsetToPositionViewModifier: ViewModifier {
         return .zero
     }
     
-    func body(content: Content) -> some View {
+    @_optimize(none) func body(content: Content) -> some View {
         content
             .offsetIf(condition, offsetForPositionProvider.offsetPosition(
                 center: self.center,

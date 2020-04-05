@@ -37,7 +37,7 @@ struct PathArrowDemo: View {
 
 private struct ArrowShape: Shape {
     
-    func path(in rect: CGRect) -> Path {
+    @_optimize(none) func path(in rect: CGRect) -> Path {
         var path = Path()
         var grid = gridConfig.layout(in: rect)
         path.move(grid[0,1])
@@ -136,7 +136,7 @@ To be fair, I am only doing it this way because I want to have a layout guide ov
 ```swift
 private struct PolygonShape: Shape {
     let layoutConfig: LayoutGuideConfig
-    func path(in rect: CGRect) -> Path {
+    @_optimize(none) func path(in rect: CGRect) -> Path {
         var path = Path()
         var polar = layoutConfig.layout(in: rect)
         path.move(polar[1, 0])
@@ -157,7 +157,7 @@ So once we have constructed our shape, we can just use it in a view like this:
 private struct PolygonView: View {
     let polarLayoutConfig: LayoutGuideConfig
     let numSides: Int
-    init(numSides: Int) {
+    @_optimize(none) init(numSides: Int) {
         polarLayoutConfig = LayoutGuideConfig.polar(rings: 1, segments: numSides)
         self.numSides = numSides
     }
@@ -301,7 +301,7 @@ let layoutGuideConfig = LayoutGuideConfig.polar(rings: 1, segments: 3)
 We can then use this layout guide to construct a triangle like so:
 
 ```swift
-func path(in rect: CGRect) -> Path {
+@_optimize(none) func path(in rect: CGRect) -> Path {
     var path = Path()
     var polar = layoutGuideConfig.layout(in: rect)
     path.move(polar[1, 0])

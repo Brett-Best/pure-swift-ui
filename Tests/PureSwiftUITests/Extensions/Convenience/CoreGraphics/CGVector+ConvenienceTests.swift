@@ -33,7 +33,7 @@ class CGVectorConvenienceExtensionsTests: XCTestCase {
 
 extension CGVectorConvenienceExtensionsTests {
     
-    func testInit() {
+    @_optimize(none) func testInit() {
         XCTAssertEqual(CGVector(dx.asInt), CGVector(dx, dx))
         XCTAssertEqual(CGVector(dx.asInt), CGVector(dx, dx))
         XCTAssertEqual(CGVector(dx.asInt, dy.asInt), vector)
@@ -45,7 +45,7 @@ extension CGVectorConvenienceExtensionsTests {
 
 extension CGVectorConvenienceExtensionsTests {
     
-    func testStaticInitialisers() {
+    @_optimize(none) func testStaticInitialisers() {
         XCTAssertEqual(.dx(dx), CGVector(dx, 0))
         XCTAssertEqual(.dy(dy), CGVector(0, dy))
         XCTAssertEqual(.vector(dx, dy), vector)
@@ -57,7 +57,7 @@ extension CGVectorConvenienceExtensionsTests {
 
 extension CGVectorConvenienceExtensionsTests {
 
-    func testAsType() {
+    @_optimize(none) func testAsType() {
         XCTAssertEqual(vector.asCGRect, CGRect(0, 0, dx, dy))
         XCTAssertEqual(vector.asCGPoint, CGPoint(dx, dy))
         XCTAssertEqual(vector.asCGSize, CGSize(dx, dy))
@@ -69,7 +69,7 @@ extension CGVectorConvenienceExtensionsTests {
 
 extension CGVectorConvenienceExtensionsTests {
     
-    func testDimensions() {
+    @_optimize(none) func testDimensions() {
         XCTAssertEqual(vector.width, dx)
         XCTAssertEqual(vector.height, dy)
         XCTAssertEqual(vector.midX, halfWidth)
@@ -85,7 +85,7 @@ extension CGVectorConvenienceExtensionsTests {
 
 extension CGVectorConvenienceExtensionsTests {
 
-    func testScaled() {
+    @_optimize(none) func testScaled() {
         XCTAssertEqual(vector.scaled(0.5), CGSize(halfWidth, halfHeight))
         XCTAssertEqual(vector.widthScaled(0.5), halfWidth)
         XCTAssertEqual(vector.heightScaled(0.5), halfHeight)
@@ -96,7 +96,7 @@ extension CGVectorConvenienceExtensionsTests {
 
 extension CGVectorConvenienceExtensionsTests {
     
-    func testClamping() {
+    @_optimize(none) func testClamping() {
         XCTAssertEqual(vector.clamped(from: 4.1, to: 5.9), CGVector(4.1, 5.9))
         XCTAssertEqual(vector.clamped(from: 4.1, to: 8), CGVector(4.1, dy))
         XCTAssertEqual(vector.clamped(from: 2, to: 5.9), CGVector(dx, 5.9))
@@ -108,12 +108,12 @@ extension CGVectorConvenienceExtensionsTests {
 
 extension CGVectorConvenienceExtensionsTests {
     
-    func testMinus() {
+    @_optimize(none) func testMinus() {
         XCTAssertEqual(vector - CGVector(1, 1), CGVector(dx - 1, dy - 1))
         XCTAssertEqual(vector - vector, .zero)
     }
     
-    func testPlus() {
+    @_optimize(none) func testPlus() {
         XCTAssertEqual(vector + vector, CGVector(dx + dx, dy + dy))
         XCTAssertEqual(vector + CGVector(1, 1), CGVector(dx + 1, dy + 1))
     }

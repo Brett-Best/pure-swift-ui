@@ -33,7 +33,7 @@ class CGSizeConvenienceExtensionsTests: XCTestCase {
 
 extension CGSizeConvenienceExtensionsTests {
     
-    func testInit() {
+    @_optimize(none) func testInit() {
         XCTAssertEqual(CGSize(width, height), size)
         XCTAssertEqual(CGSize(width.asInt, height.asInt), size)
         XCTAssertEqual(CGSize(width), CGSize(width, width))
@@ -45,7 +45,7 @@ extension CGSizeConvenienceExtensionsTests {
 
 extension CGSizeConvenienceExtensionsTests {
     
-    func testStaticInit() {
+    @_optimize(none) func testStaticInit() {
         XCTAssertEqual(CGSize.width(width), CGSize(width, 0))
         XCTAssertEqual(CGSize.height(height), CGSize(0, height))
         XCTAssertEqual(CGSize.size(width, height), CGSize(width, height))
@@ -58,7 +58,7 @@ extension CGSizeConvenienceExtensionsTests {
 
 extension CGSizeConvenienceExtensionsTests {
 
-    func testAsType() {
+    @_optimize(none) func testAsType() {
         XCTAssertEqual(size.asCGRect, CGRect(0, 0, width, height))
         XCTAssertEqual(size.asCGPoint, CGPoint(width, height))
         XCTAssertEqual(size.asCGVector, CGVector(width, height))
@@ -70,7 +70,7 @@ extension CGSizeConvenienceExtensionsTests {
 
 extension CGSizeConvenienceExtensionsTests {
     
-    func testDimensions() {
+    @_optimize(none) func testDimensions() {
         XCTAssertEqual(size.x, width)
         XCTAssertEqual(size.y, height)
         XCTAssertEqual(size.midX, halfWidth)
@@ -84,7 +84,7 @@ extension CGSizeConvenienceExtensionsTests {
 
 extension CGSizeConvenienceExtensionsTests {
 
-    func testScaled() {
+    @_optimize(none) func testScaled() {
         XCTAssertEqual(size.scaled(0.5), CGSize(halfWidth, halfHeight))
         XCTAssertEqual(size.scaled(0.2, 0.7), CGSize(width * 0.2, height * 0.7))
         XCTAssertEqual(size.widthScaled(0.5), halfWidth)
@@ -96,7 +96,7 @@ extension CGSizeConvenienceExtensionsTests {
 
 extension CGSizeConvenienceExtensionsTests {
     
-    func testClamping() {
+    @_optimize(none) func testClamping() {
         XCTAssertEqual(size.clamped(from: 4.1, to: 5.9), CGSize(4.1, 5.9))
         XCTAssertEqual(size.clamped(from: 4.1, to: 8), CGSize(4.1, height))
         XCTAssertEqual(size.clamped(from: 2, to: 5.9), CGSize(width, 5.9))
@@ -108,12 +108,12 @@ extension CGSizeConvenienceExtensionsTests {
 
 extension CGSizeConvenienceExtensionsTests {
     
-    func testMinus() {
+    @_optimize(none) func testMinus() {
         XCTAssertEqual(size - .square(1), CGSize(width - 1, height - 1))
         XCTAssertEqual(size - size, .zero)
     }
     
-    func testPlus() {
+    @_optimize(none) func testPlus() {
         XCTAssertEqual(size + size, CGSize(width + width, height + height))
         XCTAssertEqual(size + .square(1), CGSize(width + 1, height + 1))
     }
@@ -123,7 +123,7 @@ extension CGSizeConvenienceExtensionsTests {
 
 extension CGSizeConvenienceExtensionsTests {
     
-    func testSquare() {
+    @_optimize(none) func testSquare() {
         XCTAssertEqual(CGSize.square(width), CGSize(width))
         XCTAssertEqual(CGSize.square(width.asInt), CGSize(width))
     }
@@ -133,7 +133,7 @@ extension CGSizeConvenienceExtensionsTests {
 
 extension CGSizeConvenienceExtensionsTests {
     
-    func testMapForSize() {
+    @_optimize(none) func testMapForSize() {
         let sourceRect = CGRect(40, 40, width, height)
         let destination = CGRect(0, 0, 15, 10)
         XCTAssertEqual(sourceRect.size.map(from: sourceRect, to: destination), destination.size)

@@ -24,7 +24,7 @@ private struct GridLayoutCoordinator: LayoutCoordinator {
         baseOrigin.offset(CGPoint(x: xOffsetCalculator.offsetFor(index: x), y: yOffsetCalculator.offsetFor(index: y)))
     }
     
-    func reframed(into rect: CGRect, originalRect: CGRect, origin: UnitPoint? = nil) -> LayoutCoordinator {
+    @_optimize(none) func reframed(into rect: CGRect, originalRect: CGRect, origin: UnitPoint? = nil) -> LayoutCoordinator {
         
 //        let newOrigin = origin == nil ? rect.origin.map(from: originalRect, to: rect) : calcOrigin(in: rect, origin: origin!)
         let newOrigin = calcOrigin(in: rect, origin: origin ?? .topLeading)
@@ -37,7 +37,7 @@ private struct GridLayoutCoordinator: LayoutCoordinator {
             yOffsetCalculator: yOffsetCalculator.reframed(rect.height))
     }
     
-    func anchorLocation(for anchor: UnitPoint, size: CGSize) -> CGPoint {
+    @_optimize(none) func anchorLocation(for anchor: UnitPoint, size: CGSize) -> CGPoint {
         if anchor == .topLeading {
             return baseOrigin
         } else {
@@ -90,8 +90,8 @@ private extension GridLayoutCoordinator {
 private protocol OffsetForIndexCalculator {
     
     var indexCount: Int {get}
-    func offsetFor(index: Int) -> CGFloat
-    func reframed(_ size: CGFloat) -> OffsetForIndexCalculator
+    @_optimize(none) func offsetFor(index: Int) -> CGFloat
+    @_optimize(none) func reframed(_ size: CGFloat) -> OffsetForIndexCalculator
 }
 
 // MARK: ----- EQUIDISTANT OFFSET FOR INDEX
@@ -101,7 +101,7 @@ private struct EquidistantOffsetForIndexCalculator: OffsetForIndexCalculator {
     private let numSlices: Int
     private let offsetPerIndex: CGFloat
     
-    init(_ size: CGFloat, numSlices: Int) {
+    @_optimize(none) init(_ size: CGFloat, numSlices: Int) {
         self.numSlices = numSlices > 0 ? numSlices : 1
         self.offsetPerIndex = size / numSlices.asCGFloat
     }
@@ -110,11 +110,11 @@ private struct EquidistantOffsetForIndexCalculator: OffsetForIndexCalculator {
         numSlices
     }
     
-    func offsetFor(index: Int) -> CGFloat {
+    @_optimize(none) func offsetFor(index: Int) -> CGFloat {
         offsetPerIndex * index.asCGFloat
     }
     
-    func reframed(_ size: CGFloat) -> OffsetForIndexCalculator {
+    @_optimize(none) func reframed(_ size: CGFloat) -> OffsetForIndexCalculator {
         EquidistantOffsetForIndexCalculator(size, numSlices: numSlices)
     }
 }
@@ -127,7 +127,7 @@ private struct RelativeOffsetForIndexCalculator: OffsetForIndexCalculator {
     private let offsetSteps: [CGFloat]
     private let size: CGFloat
     
-    init(_ size: CGFloat, slices: [CGFloat]) {
+    @_optimize(none) init(_ size: CGFloat, slices: [CGFloat]) {
         
         var offsetSteps: [CGFloat] = []
         for slice in slices {
@@ -142,7 +142,7 @@ private struct RelativeOffsetForIndexCalculator: OffsetForIndexCalculator {
         slices.count
     }
     
-    func offsetFor(index: Int) -> CGFloat {
+    @_optimize(none) func offsetFor(index: Int) -> CGFloat {
         if index >= 0 && index < offsetSteps.count {
             return size * offsetSteps[index]
         } else if index >= offsetSteps.count {
@@ -152,7 +152,7 @@ private struct RelativeOffsetForIndexCalculator: OffsetForIndexCalculator {
         }
     }
     
-    func reframed(_ size: CGFloat) -> OffsetForIndexCalculator {
+    @_optimize(none) func reframed(_ size: CGFloat) -> OffsetForIndexCalculator {
         RelativeOffsetForIndexCalculator(size, slices: slices)
     }
 }
@@ -161,7 +161,7 @@ private struct RelativeOffsetForIndexCalculator: OffsetForIndexCalculator {
 
 public extension LayoutGuide {
     
-    private static func gridLayout(xOffsetCalculator: OffsetForIndexCalculator, yOffsetCalculator: OffsetForIndexCalculator, rect: CGRect, origin: UnitPoint) -> LayoutGuide {
+    @_optimize(none) private static func gridLayout(xOffsetCalculator: OffsetForIndexCalculator, yOffsetCalculator: OffsetForIndexCalculator, rect: CGRect, origin: UnitPoint) -> LayoutGuide {
        
         let coordinator = GridLayoutCoordinator(
             baseOrigin: calcOrigin(in: rect, origin: origin),
@@ -175,7 +175,7 @@ public extension LayoutGuide {
     /**
      Equidistant x and y
      */
-    static func grid(_ rect: CGRect, columns: Int, rows: Int, origin: UnitPoint = .topLeading) -> LayoutGuide {
+    @_optimize(none) static func grid(_ rect: CGRect, columns: Int, rows: Int, origin: UnitPoint = .topLeading) -> LayoutGuide {
         
         let xOffsetCalculator = EquidistantOffsetForIndexCalculator(rect.width, numSlices: columns)
         let yOffsetCalculator = EquidistantOffsetForIndexCalculator(rect.height, numSlices: rows)
@@ -186,7 +186,7 @@ public extension LayoutGuide {
     /**
      Relative x and equidistant y
      */
-    static func grid<T: UINumericType>(_ rect: CGRect, columns: [T], rows: Int, origin: UnitPoint = .topLeading) -> LayoutGuide {
+    @_optimize(none) static func grid<T: UINumericType>(_ rect: CGRect, columns: [T], rows: Int, origin: UnitPoint = .topLeading) -> LayoutGuide {
         let xOffsetCalculator = RelativeOffsetForIndexCalculator(rect.width, slices: columns.map {$0.asCGFloat})
         let yOffsetCalculator = EquidistantOffsetForIndexCalculator(rect.height, numSlices: rows)
 
@@ -196,7 +196,7 @@ public extension LayoutGuide {
     /**
      Equidistant x and relative y
      */
-    static func grid<T: UINumericType>(_ rect: CGRect, columns: Int, rows: [T], origin: UnitPoint = .topLeading) -> LayoutGuide {
+    @_optimize(none) static func grid<T: UINumericType>(_ rect: CGRect, columns: Int, rows: [T], origin: UnitPoint = .topLeading) -> LayoutGuide {
       
         let xOffsetCalculator = EquidistantOffsetForIndexCalculator(rect.width, numSlices: columns)
         let yOffsetCalculator = RelativeOffsetForIndexCalculator(rect.height, slices: rows.map {$0.asCGFloat})
@@ -207,7 +207,7 @@ public extension LayoutGuide {
     /**
      Relative x and y
      */
-    static func grid<TX: UINumericType, TY: UINumericType>(_ rect: CGRect, columns: [TX], rows: [TY], origin: UnitPoint = .topLeading) -> LayoutGuide {
+    @_optimize(none) static func grid<TX: UINumericType, TY: UINumericType>(_ rect: CGRect, columns: [TX], rows: [TY], origin: UnitPoint = .topLeading) -> LayoutGuide {
         
         let xOffsetCalculator = RelativeOffsetForIndexCalculator(rect.width, slices: columns.map {$0.asCGFloat})
         let yOffsetCalculator = RelativeOffsetForIndexCalculator(rect.height, slices: rows.map {$0.asCGFloat})

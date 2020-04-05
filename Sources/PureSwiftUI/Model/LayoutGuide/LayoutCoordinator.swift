@@ -12,12 +12,12 @@ import SwiftUI
 internal protocol LayoutCoordinator {
     
     subscript(x: Int, y: Int) -> CGPoint {get}
-    func reframed(into rect: CGRect, originalRect: CGRect, origin: UnitPoint?) -> LayoutCoordinator
+    @_optimize(none) func reframed(into rect: CGRect, originalRect: CGRect, origin: UnitPoint?) -> LayoutCoordinator
     var xCount: Int {get}
     var yCount: Int {get}
     var baseOrigin: CGPoint {get}
     var baseRect: CGRect {get}
-    func anchorLocation(for anchor: UnitPoint, size: CGSize) -> CGPoint
+    @_optimize(none) func anchorLocation(for anchor: UnitPoint, size: CGSize) -> CGPoint
     var topLeading: CGPoint {get}
     var top: CGPoint {get}
     var topTrailing: CGPoint {get}
@@ -33,7 +33,7 @@ internal protocol LayoutCoordinator {
 
 internal protocol DecoratingLayoutCoordinator: LayoutCoordinator {
     var baseCoordinator: LayoutCoordinator {get}
-    func transform(_ point: CGPoint) -> CGPoint
+    @_optimize(none) func transform(_ point: CGPoint) -> CGPoint
 }
 
 internal extension DecoratingLayoutCoordinator {
@@ -82,7 +82,7 @@ internal extension DecoratingLayoutCoordinator {
         transform(baseCoordinator.center)
     }
 
-    func anchorLocation(for anchor: UnitPoint, size: CGSize) -> CGPoint {
+    @_optimize(none) func anchorLocation(for anchor: UnitPoint, size: CGSize) -> CGPoint {
         baseCoordinator.anchorLocation(for: anchor, size: size)
     }
     
@@ -104,7 +104,7 @@ internal struct RotatedLayoutCoordinator: DecoratingLayoutCoordinator {
     let anchorPoint: CGPoint
     let baseCoordinator: LayoutCoordinator
     
-    init(angle: Angle, anchor: UnitPoint, anchorPoint: CGPoint, baseCoordinator: LayoutCoordinator) {
+    @_optimize(none) init(angle: Angle, anchor: UnitPoint, anchorPoint: CGPoint, baseCoordinator: LayoutCoordinator) {
         self.angle = angle
         self.anchor = anchor
         self.anchorPoint = anchorPoint
@@ -115,14 +115,14 @@ internal struct RotatedLayoutCoordinator: DecoratingLayoutCoordinator {
         transform(self.baseCoordinator[x, y])
     }
     
-    func transform(_ point: CGPoint) -> CGPoint {
+    @_optimize(none) func transform(_ point: CGPoint) -> CGPoint {
         let radiusToPoint = anchorPoint.radiusTo(point)
         let angleToPoint = anchorPoint.angleTo(point)
         let resultAngle = angleToPoint + angle
         return anchorPoint.offset(radius: radiusToPoint, angle: resultAngle)
     }
     
-    func reframed(into rect: CGRect, originalRect: CGRect, origin: UnitPoint?) -> LayoutCoordinator {
+    @_optimize(none) func reframed(into rect: CGRect, originalRect: CGRect, origin: UnitPoint?) -> LayoutCoordinator {
         
         let reframedBaseCoordinator = baseCoordinator.reframed(into: rect, originalRect: originalRect, origin: origin)
 //        let newAnchorPoint = anchor.map(from: originalRect, to: reframedBaseCoordinator.rect)
@@ -143,7 +143,7 @@ internal struct OffsetLayoutCoordinator: DecoratingLayoutCoordinator {
     let offset: CGPoint
     let baseCoordinator: LayoutCoordinator
     
-    init(offset: CGPoint, baseCoordinator: LayoutCoordinator) {
+    @_optimize(none) init(offset: CGPoint, baseCoordinator: LayoutCoordinator) {
         self.offset = offset
         self.baseCoordinator = baseCoordinator
     }
@@ -152,11 +152,11 @@ internal struct OffsetLayoutCoordinator: DecoratingLayoutCoordinator {
         transform(self.baseCoordinator[x, y])
     }
     
-    func transform(_ point: CGPoint) -> CGPoint {
+    @_optimize(none) func transform(_ point: CGPoint) -> CGPoint {
         point.offset(offset)
     }
     
-    func reframed(into rect: CGRect, originalRect: CGRect, origin: UnitPoint? = nil) -> LayoutCoordinator {
+    @_optimize(none) func reframed(into rect: CGRect, originalRect: CGRect, origin: UnitPoint? = nil) -> LayoutCoordinator {
         return OffsetLayoutCoordinator(offset: offset, baseCoordinator: baseCoordinator.reframed(into: rect, originalRect: originalRect, origin: origin))
     }
 }
@@ -170,7 +170,7 @@ internal struct ScaledLayoutCoordinator: DecoratingLayoutCoordinator {
     let anchorPoint: CGPoint
     let baseCoordinator: LayoutCoordinator
     
-    init(scale: CGSize, anchor: UnitPoint, anchorPoint: CGPoint, baseCoordinator: LayoutCoordinator) {
+    @_optimize(none) init(scale: CGSize, anchor: UnitPoint, anchorPoint: CGPoint, baseCoordinator: LayoutCoordinator) {
         self.scale = scale
         self.anchor = anchor
         self.anchorPoint = anchorPoint
@@ -181,12 +181,12 @@ internal struct ScaledLayoutCoordinator: DecoratingLayoutCoordinator {
         transform(self.baseCoordinator[x, y])
     }
     
-    func transform(_ point: CGPoint) -> CGPoint {
+    @_optimize(none) func transform(_ point: CGPoint) -> CGPoint {
         let offset = point - anchorPoint
         return anchorPoint + offset.scaled(scale)
     }
     
-    func reframed(into rect: CGRect, originalRect: CGRect, origin: UnitPoint? = nil) -> LayoutCoordinator {
+    @_optimize(none) func reframed(into rect: CGRect, originalRect: CGRect, origin: UnitPoint? = nil) -> LayoutCoordinator {
         
         let reframedBaseCoordinator = baseCoordinator.reframed(into: rect, originalRect: originalRect, origin: origin)
         let reframedRect = reframedBaseCoordinator.baseRect

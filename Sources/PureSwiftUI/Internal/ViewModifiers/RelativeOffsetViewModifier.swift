@@ -9,14 +9,14 @@
 import SwiftUI
 
 protocol RelativeOffsetForSizeProvider {
-    func offset(size: CGSize?) -> CGPoint
+    @_optimize(none) func offset(size: CGSize?) -> CGPoint
 }
 
 struct RelativeOffsetProvider: RelativeOffsetForSizeProvider {
     
     let relativeOffset: CGPoint
     
-    func offset(size: CGSize?) -> CGPoint {
+    @_optimize(none) func offset(size: CGSize?) -> CGPoint {
         .init(relativeOffset.x * (size?.width ?? 0), relativeOffset.y * (size?.height ?? 0))
     }
 }
@@ -25,7 +25,7 @@ struct RelativeXOffsetProvider: RelativeOffsetForSizeProvider {
     
     let relativeXOffset: CGFloat
     
-    func offset(size: CGSize?) -> CGPoint {
+    @_optimize(none) func offset(size: CGSize?) -> CGPoint {
         .init(relativeXOffset * (size?.width ?? 0), 0)
     }
 }
@@ -34,7 +34,7 @@ struct RelativeYOffsetProvider: RelativeOffsetForSizeProvider {
     
     let relativeYOffset: CGFloat
     
-    func offset(size: CGSize?) -> CGPoint {
+    @_optimize(none) func offset(size: CGSize?) -> CGPoint {
         .init(0, relativeYOffset * (size?.height ?? 0))
     }
 }
@@ -46,7 +46,7 @@ struct RelativeOffsetViewModifier: ViewModifier {
     
     @State private var size: CGSize?
     
-    func body(content: Content) -> some View {
+    @_optimize(none) func body(content: Content) -> some View {
         content
             .offsetIf(condition, relativeOffsetForSizeProvider.offset(size: self.size))
             .geometryReader { (geo: GeometryProxy) in

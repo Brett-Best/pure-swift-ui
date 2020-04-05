@@ -10,19 +10,19 @@ import UIKit
 
 public extension UIScreen {
     
-    static func mainOrigin() -> CGPoint {
+    @_optimize(none) static func mainOrigin() -> CGPoint {
         main.origin
     }
     
-    static func mainCenter() -> CGPoint {
+    @_optimize(none) static func mainCenter() -> CGPoint {
         main.center
     }
     
-    static func mainWidthScaled<T: UINumericType>(_ scale: T) -> CGFloat {
+    @_optimize(none) static func mainWidthScaled<T: UINumericType>(_ scale: T) -> CGFloat {
         main.widthScaled(scale)
     }
 
-    static func mainHeightScaled<T: UINumericType>(_ scale: T) -> CGFloat {
+    @_optimize(none) static func mainHeightScaled<T: UINumericType>(_ scale: T) -> CGFloat {
         main.heightScaled(scale)
     }
 
@@ -58,7 +58,7 @@ public extension UIScreen {
         main.maxY
     }
     
-    static func mainSizeScaled<T: UINumericType>(_ scale: T) -> CGSize {
+    @_optimize(none) static func mainSizeScaled<T: UINumericType>(_ scale: T) -> CGSize {
         main.size.scaled(scale)
     }
     
@@ -66,11 +66,11 @@ public extension UIScreen {
         main.size
     }
 
-    func widthScaled<T: UINumericType>(_ scale: T) -> CGFloat {
+    @_optimize(none) func widthScaled<T: UINumericType>(_ scale: T) -> CGFloat {
         width * scale.asCGFloat
     }
     
-    func heightScaled<T: UINumericType>(_ scale: T) -> CGFloat {
+    @_optimize(none) func heightScaled<T: UINumericType>(_ scale: T) -> CGFloat {
         height * scale.asCGFloat
     }
     

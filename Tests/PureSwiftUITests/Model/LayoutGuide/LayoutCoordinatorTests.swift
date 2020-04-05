@@ -26,7 +26,7 @@ class LayoutCoordinatorTests: BaseLayoutGuideTests {
 
 extension LayoutCoordinatorTests {
     
-    func testOffsetLayoutProperties() {
+    @_optimize(none) func testOffsetLayoutProperties() {
         var grid = self.grid
         assertEqual(grid[0,0], rect.origin)
         grid = grid.offset(.x(10))
@@ -43,7 +43,7 @@ extension LayoutCoordinatorTests {
 
 extension LayoutCoordinatorTests {
     
-    func testReframedOffsetLayoutCoordinator() {
+    @_optimize(none) func testReframedOffsetLayoutCoordinator() {
         var grid = self.grid
         grid = grid.offset(.x(10))
         grid = grid.reframed(bottomRightRect, origin: .topLeading)
@@ -56,7 +56,7 @@ extension LayoutCoordinatorTests {
 
 extension LayoutCoordinatorTests {
     
-    func testRotatedLayoutProperties() {
+    @_optimize(none) func testRotatedLayoutProperties() {
         var grid = self.grid
         assertEqual(grid[5, 10], rect.center)
         grid = grid.rotated(10.degrees)
@@ -71,7 +71,7 @@ extension LayoutCoordinatorTests {
 
 extension LayoutCoordinatorTests {
     
-    func testReframedRotatedLayoutCoordinator() {
+    @_optimize(none) func testReframedRotatedLayoutCoordinator() {
         var grid = self.grid
         grid = grid.rotated(90.degrees)
         grid = grid.reframed(bottomRightRect, origin: .center)
@@ -84,7 +84,7 @@ extension LayoutCoordinatorTests {
 
 extension LayoutCoordinatorTests {
     
-    func testScaledLayoutProperties() {
+    @_optimize(none) func testScaledLayoutProperties() {
         var grid = self.grid
         assertEqual(grid[5, 10], rect.center)
         grid = grid.scaled(2)
@@ -102,7 +102,7 @@ extension LayoutCoordinatorTests {
 
 extension LayoutCoordinatorTests {
     
-    func testReframedScaledLayoutCoordinator() {
+    @_optimize(none) func testReframedScaledLayoutCoordinator() {
         var grid = self.grid
         grid = grid.scaled(2)
         grid = grid.reframed(bottomRightRect)

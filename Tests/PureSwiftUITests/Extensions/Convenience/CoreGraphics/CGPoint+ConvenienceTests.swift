@@ -24,7 +24,7 @@ class CGPointConvenienceExtensionsTests: XCTestCase {
 
 extension CGPointConvenienceExtensionsTests {
     
-      func testInit() {
+      @_optimize(none) func testInit() {
         XCTAssertEqual(CGPoint(x), CGPoint(x: x, y: x))
         XCTAssertEqual(CGPoint(x.asInt), CGPoint(x: x, y: x))
         XCTAssertEqual(CGPoint(x, y), testPoint)
@@ -36,14 +36,14 @@ extension CGPointConvenienceExtensionsTests {
 
 extension CGPointConvenienceExtensionsTests {
     
-    func testStaticInit() {
+    @_optimize(none) func testStaticInit() {
         XCTAssertEqual(CGPoint.x(x), CGPoint(x, 0))
         XCTAssertEqual(CGPoint.y(y), CGPoint(0, y))
         XCTAssertEqual(CGPoint.point(x, y), CGPoint(x, y))
         XCTAssertEqual(CGPoint.point(x), CGPoint(x, x))
     }
     
-    func testStaticInitWithOffsetAndAngle() {
+    @_optimize(none) func testStaticInitWithOffsetAndAngle() {
         assertEqual(CGPoint.point(x, 90.degrees), CGPoint(x, 0))
         assertEqual(CGPoint.point(x, 180.degrees), CGPoint(0, x))
         assertEqual(CGPoint.point(x, 270.degrees), CGPoint(-x, 0))
@@ -55,7 +55,7 @@ extension CGPointConvenienceExtensionsTests {
 
 extension CGPointConvenienceExtensionsTests {
     
-    func testAsType() {
+    @_optimize(none) func testAsType() {
         XCTAssertEqual(testPoint.asCGSize, CGSize(x, y))
         XCTAssertEqual(testPoint.asCGRect, CGRect(0 ,0, x, y))
         XCTAssertEqual(testPoint.asCGVector, CGVector(x, y))
@@ -68,7 +68,7 @@ extension CGPointConvenienceExtensionsTests {
 
 extension CGPointConvenienceExtensionsTests {
 
-    func testDimensionProperties() {
+    @_optimize(none) func testDimensionProperties() {
         XCTAssertEqual(testPoint.width, x)
         XCTAssertEqual(testPoint.height, y)
         XCTAssertEqual(testPoint.midX, x * 0.5)
@@ -85,7 +85,7 @@ extension CGPointConvenienceExtensionsTests {
 
 extension CGPointConvenienceExtensionsTests {
 
-    func testScaledProperties() {
+    @_optimize(none) func testScaledProperties() {
         XCTAssertEqual(testPoint.scaled(0.5), CGPoint(x * 0.5, y * 0.5))
         XCTAssertEqual(testPoint.scaled(0.1, 0.7), CGPoint(x * 0.1, y * 0.7))
         XCTAssertEqual(testPoint.scaled(.init(0, 0.5)), CGPoint(0, y * 0.5))
@@ -98,11 +98,11 @@ extension CGPointConvenienceExtensionsTests {
 
 extension CGPointConvenienceExtensionsTests {
     
-    func testOperatorMultiply() {
+    @_optimize(none) func testOperatorMultiply() {
         XCTAssertEqual(testPoint + testPoint, CGPoint(x * 2, y * 2))
     }
 
-    func testOperatorDivide() {
+    @_optimize(none) func testOperatorDivide() {
         XCTAssertEqual(testPoint - testPoint, .zero)
     }
 }
@@ -111,7 +111,7 @@ extension CGPointConvenienceExtensionsTests {
 
 extension CGPointConvenienceExtensionsTests {
     
-    func testOffset() {
+    @_optimize(none) func testOffset() {
         let offset = CGPoint(10, 20)
         let expectedOffset = CGPoint(testPoint.x + offset.x, testPoint.y + offset.y)
         XCTAssertEqual(testPoint.offset(offset.x, offset.y), expectedOffset)
@@ -123,7 +123,7 @@ extension CGPointConvenienceExtensionsTests {
         XCTAssertEqual(testPoint.yOffset(offset.y), CGPoint(testPoint.x, expectedOffset.y))
     }
     
-    func testOffsetRadiusAngle() {
+    @_optimize(none) func testOffsetRadiusAngle() {
         assertEqual(testPoint.offset(radius: 10, angle: .trailing), CGPoint(testPoint.x + 10, testPoint.y))
         assertEqual(testPoint.offset(radius: 10, angle: .bottom), CGPoint(testPoint.x, testPoint.y + 10))
         assertEqual(testPoint.offset(radius: 10, angle: .leading), CGPoint(testPoint.x - 10, testPoint.y))
@@ -135,7 +135,7 @@ extension CGPointConvenienceExtensionsTests {
 
 extension CGPointConvenienceExtensionsTests {
     
-    func testOffsetScaled() {
+    @_optimize(none) func testOffsetScaled() {
         let offset = CGPoint(10, 20)
         let expectedOffset = CGPoint(testPoint.x + offset.x, testPoint.y + offset.y)
         let expectedHalfOffset = CGPoint(testPoint.x + offset.x * 0.5, testPoint.y + offset.y * 0.5)
@@ -164,7 +164,7 @@ extension CGPointConvenienceExtensionsTests {
         XCTAssertEqual(testPoint.yOffset(offset.y, factor: 1), CGPoint(testPoint.x, expectedOffset.y))
     }
     
-    func testOffsetRadiusAngleScaled() {
+    @_optimize(none) func testOffsetRadiusAngleScaled() {
         assertEqual(testPoint.offset(radius: 10, angle: .trailing, factor: 0), testPoint)
         assertEqual(testPoint.offset(radius: 10, angle: .bottom, factor: 0), testPoint)
         assertEqual(testPoint.offset(radius: 10, angle: .leading, factor: 0), testPoint)
@@ -186,7 +186,7 @@ extension CGPointConvenienceExtensionsTests {
 
 extension CGPointConvenienceExtensionsTests {
     
-    func testToScaled() {
+    @_optimize(none) func testToScaled() {
         let point2 = CGPoint(x * 2, y * 2)
         XCTAssertEqual(testPoint.to(point2, 0), testPoint)
         XCTAssertEqual(testPoint.to(point2, 1), point2)
@@ -194,7 +194,7 @@ extension CGPointConvenienceExtensionsTests {
         XCTAssertEqual(testPoint.to(point2, 2), CGPoint(x * 3, y * 3))
     }
     
-    func testToScaledWithSize() {
+    @_optimize(none) func testToScaledWithSize() {
         let point2 = CGPoint(x * 2, y * 2)
         XCTAssertEqual(testPoint.to(point2, .init(0, 1)), CGPoint(x, point2.y))
         XCTAssertEqual(testPoint.to(point2, .init(1, 1)), point2)
@@ -207,7 +207,7 @@ extension CGPointConvenienceExtensionsTests {
 
 extension CGPointConvenienceExtensionsTests {
     
-    func testClampedMin() {
+    @_optimize(none) func testClampedMin() {
     
         let expectedResult = CGPoint(min, min)
         let result = CGPoint(min - 1, min - 1).clamped(from: min, to: max)
@@ -217,7 +217,7 @@ extension CGPointConvenienceExtensionsTests {
         XCTAssertEqual(result2, expectedResult)
     }
 
-    func testClampedMax() {
+    @_optimize(none) func testClampedMax() {
     
         let expectedResult = CGPoint(max, max)
         let result = CGPoint(max + 1, max + 1).clamped(from: min, to: max)
@@ -227,7 +227,7 @@ extension CGPointConvenienceExtensionsTests {
         XCTAssertEqual(result2, expectedResult)
     }
 
-    func testClampedMid() {
+    @_optimize(none) func testClampedMid() {
     
         let mid = (max - min) / 2 + min
         let expectedResult = CGPoint(mid, mid)
@@ -243,7 +243,7 @@ extension CGPointConvenienceExtensionsTests {
 
 extension CGPointConvenienceExtensionsTests {
     
-    func testOffsetAnchorInSize() {
+    @_optimize(none) func testOffsetAnchorInSize() {
         
         let size = CGSize(4, 2)
         
@@ -270,7 +270,7 @@ extension CGPointConvenienceExtensionsTests {
 extension CGPointConvenienceExtensionsTests {
     
     
-    func testOffsetAnchorInSizeScaled() {
+    @_optimize(none) func testOffsetAnchorInSizeScaled() {
         
         let size = CGSize(4, 2)
         
@@ -296,7 +296,7 @@ extension CGPointConvenienceExtensionsTests {
 
 extension CGPointConvenienceExtensionsTests {
     
-    func testDeprecatedCalcAngleTo() {
+    @_optimize(none) func testDeprecatedCalcAngleTo() {
         
         let offsetPoint1 = testPoint.offset(1, -1)
         let offsetPoint2 = testPoint.offset(-1, 1)
@@ -311,7 +311,7 @@ extension CGPointConvenienceExtensionsTests {
         XCTAssertEqual(testPoint.calcAngleTo(offsetPoint3.x, offsetPoint3.y), .bottom)
     }
     
-    func testangleTo() {
+    @_optimize(none) func testangleTo() {
         
         let offsetPoint1 = testPoint.offset(1, -1)
         let offsetPoint2 = testPoint.offset(-1, 1)
@@ -331,7 +331,7 @@ extension CGPointConvenienceExtensionsTests {
 
 extension CGPointConvenienceExtensionsTests {
     
-    func testDeprecatedCalcRadiusTo() {
+    @_optimize(none) func testDeprecatedCalcRadiusTo() {
         
         let offsetPoint1 = testPoint.offset(1, 0)
         let offsetPoint2 = testPoint.offset(1, 1)
@@ -360,7 +360,7 @@ extension CGPointConvenienceExtensionsTests {
         XCTAssertEqual(testPoint.calcSquaredRadiusTo(offsetPoint4.x, offsetPoint4.y), 9)
     }
     
-    func testRadiusTo() {
+    @_optimize(none) func testRadiusTo() {
         
         let offsetPoint1 = testPoint.offset(1, 0)
         let offsetPoint2 = testPoint.offset(1, 1)
@@ -395,7 +395,7 @@ extension CGPointConvenienceExtensionsTests {
 extension CGPointConvenienceExtensionsTests {
     
     
-    func testCalcPoint() {
+    @_optimize(none) func testCalcPoint() {
         
         assertEqual(testPoint.calcPoint(length: 10, angle: .top), CGPoint(testPoint.x, testPoint.y - 10))
         assertEqual(testPoint.calcPoint(length: 10, angle: .trailing), CGPoint(testPoint.x + 10, testPoint.y))
@@ -409,7 +409,7 @@ extension CGPointConvenienceExtensionsTests {
 extension CGPointConvenienceExtensionsTests {
     
     
-    func testCalcPointScaled() {
+    @_optimize(none) func testCalcPointScaled() {
         
         assertEqual(testPoint.calcPoint(length: 10, angle: .top, factor: 0.5), CGPoint(testPoint.x, testPoint.y - 5))
         assertEqual(testPoint.calcPoint(length: 10, angle: .trailing, factor: 0.5), CGPoint(testPoint.x + 5, testPoint.y))
@@ -428,7 +428,7 @@ extension CGPointConvenienceExtensionsTests {
 
 extension CGPointConvenienceExtensionsTests {
     
-    func testMoveOrigin() {
+    @_optimize(none) func testMoveOrigin() {
         let size = CGSize(4, 2)
 
         assertEqual(testPoint.moveOrigin(in: size), testPoint)
@@ -448,7 +448,7 @@ extension CGPointConvenienceExtensionsTests {
 
 extension CGPointConvenienceExtensionsTests {
     
-    func testMoveOriginScaled() {
+    @_optimize(none) func testMoveOriginScaled() {
         let size = CGSize(4, 2)
         
         assertEqual(testPoint.moveOrigin(in: size, factor: 0.5), testPoint)
@@ -481,7 +481,7 @@ extension CGPointConvenienceExtensionsTests {
 
 extension CGPointConvenienceExtensionsTests {
     
-    func testConvertToRect() {
+    @_optimize(none) func testConvertToRect() {
  
         let point = CGPoint(10, 10)
         XCTAssertEqual(testPoint.rect(to: point), CGRect(4, 5, 6, 5))
@@ -492,7 +492,7 @@ extension CGPointConvenienceExtensionsTests {
 
 extension CGPointConvenienceExtensionsTests {
     
-    func testMapForPoint() {
+    @_optimize(none) func testMapForPoint() {
         let sourceRect = CGRect(20, 30, 24, 40)
         let destination = CGRect(0, 0, 15, 20)
         XCTAssertEqual(sourceRect.center.map(from: sourceRect, to: destination), destination.center)
@@ -500,7 +500,7 @@ extension CGPointConvenienceExtensionsTests {
         XCTAssertEqual(sourceRect.bottomTrailing.map(from: sourceRect, to: destination), destination.bottomTrailing)
     }
     
-    func testMapForPointWithNoWidth() {
+    @_optimize(none) func testMapForPointWithNoWidth() {
         let sourceRect = CGRect(20, 30, 0, 40)
         let destination = CGRect(0, 0, 15, 20)
         XCTAssertEqual(sourceRect.center.map(from: sourceRect, to: destination), destination.leading)
@@ -508,7 +508,7 @@ extension CGPointConvenienceExtensionsTests {
         XCTAssertEqual(sourceRect.bottomTrailing.map(from: sourceRect, to: destination), destination.bottomLeading)
     }
     
-    func testMapForPointWithNoHeight() {
+    @_optimize(none) func testMapForPointWithNoHeight() {
         let sourceRect = CGRect(20, 30, 24, 0)
         let destination = CGRect(0, 0, 15, 20)
         XCTAssertEqual(sourceRect.center.map(from: sourceRect, to: destination), destination.top)
@@ -516,7 +516,7 @@ extension CGPointConvenienceExtensionsTests {
         XCTAssertEqual(sourceRect.bottomTrailing.map(from: sourceRect, to: destination), destination.topTrailing)
     }
     
-    func testMapForPointWithNoWidthOrHeight() {
+    @_optimize(none) func testMapForPointWithNoWidthOrHeight() {
         let sourceRect = CGRect(20, 30, 0, 0)
         let destination = CGRect(0, 0, 15, 20)
         XCTAssertEqual(sourceRect.center.map(from: sourceRect, to: destination), destination.topLeading)

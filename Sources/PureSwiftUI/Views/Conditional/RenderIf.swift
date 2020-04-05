@@ -12,7 +12,7 @@ public struct RenderIf<IfContent: View>: View {
     let render: Bool
     let ifContent: () -> IfContent
 
-    public init(_ render: Bool, @ViewBuilder content ifContent: @escaping () -> IfContent) {
+    @_optimize(none) public init(_ render: Bool, @ViewBuilder content ifContent: @escaping () -> IfContent) {
         self.render = render
         self.ifContent = ifContent
     }
@@ -25,7 +25,7 @@ public struct RenderIf<IfContent: View>: View {
         }
     }
     
-    public func elseRender<ElseContent: View>(@ViewBuilder content elseContent: @escaping () -> ElseContent) -> some View {
+    @_optimize(none) public func elseRender<ElseContent: View>(@ViewBuilder content elseContent: @escaping () -> ElseContent) -> some View {
         Builder {
             if self.render {
                 ifContent()
@@ -40,7 +40,7 @@ internal struct Builder<Content: View>: View {
     
     var content: Content
     
-    init(@ViewBuilder content: () -> Content) {
+    @_optimize(none) init(@ViewBuilder content: () -> Content) {
         self.content = content()
     }
     

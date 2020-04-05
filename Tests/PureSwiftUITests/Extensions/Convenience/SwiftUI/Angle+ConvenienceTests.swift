@@ -10,23 +10,23 @@ import XCTest
 
 class AngleConvenienceExtensionsTests: XCTestCase {
     
-    func testOperatorMultiply() {
+    @_optimize(none) func testOperatorMultiply() {
         XCTAssertEqual(4.degrees, 2.degrees * 2)
     }
 
-    func testOperatorDivide() {
+    @_optimize(none) func testOperatorDivide() {
         XCTAssertEqual(2.degrees, 4.degrees / 2)
     }
     
-    func testCos() {
+    @_optimize(none) func testCos() {
         XCTAssertEqual(2.degrees.cos, cos(Angle(degrees: 2.0).radians))
     }
     
-    func testSin() {
+    @_optimize(none) func testSin() {
         XCTAssertEqual(2.degrees.sin, sin(Angle(degrees: 2.0).radians))
     }
     
-    func testTan() {
+    @_optimize(none) func testTan() {
         XCTAssertEqual(2.degrees.tan, tan(Angle(degrees: 2.0).radians))
     }
 }
@@ -35,7 +35,7 @@ class AngleConvenienceExtensionsTests: XCTestCase {
 
 extension AngleConvenienceExtensionsTests {
 
-    func testStaticConstants() {
+    @_optimize(none) func testStaticConstants() {
         XCTAssertEqual(Angle.topLeading, 315.degrees)
         XCTAssertEqual(Angle.top, 0.degrees)
         XCTAssertEqual(Angle.topTrailing, 45.degrees)
@@ -51,7 +51,7 @@ extension AngleConvenienceExtensionsTests {
 
 extension AngleConvenienceExtensionsTests {
 
-    func testCycle() {
+    @_optimize(none) func testCycle() {
         XCTAssertEqual(Angle.cycle(0.25), 90.degrees)
         XCTAssertEqual(Angle.cycle(0.5), 180.degrees)
         XCTAssertEqual(Angle.cycle(0.75), 270.degrees)
@@ -62,7 +62,7 @@ extension AngleConvenienceExtensionsTests {
 
 extension AngleConvenienceExtensionsTests {
     
-    func testAsUnitPointForNamedAngles() {
+    @_optimize(none) func testAsUnitPointForNamedAngles() {
         XCTAssertEqual(Angle.topLeading.asUnitPoint, .topLeading)
         XCTAssertEqual(Angle.top.asUnitPoint, .top)
         XCTAssertEqual(Angle.topTrailing.asUnitPoint, .topTrailing)
@@ -73,7 +73,7 @@ extension AngleConvenienceExtensionsTests {
         XCTAssertEqual(Angle.leading.asUnitPoint, .leading)
     }
 
-    func testAsUnitPoint() {
+    @_optimize(none) func testAsUnitPoint() {
         assertEqual((Angle.topLeading + 360.degrees).asUnitPoint, .topLeading)
         assertEqual((Angle.top + 360.degrees).asUnitPoint, .top)
         assertEqual((Angle.topTrailing + 360.degrees).asUnitPoint, .topTrailing)

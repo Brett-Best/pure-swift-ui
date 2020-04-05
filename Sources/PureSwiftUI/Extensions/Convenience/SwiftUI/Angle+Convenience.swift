@@ -9,11 +9,11 @@ import SwiftUI
 
 public extension Angle {
     
-    static func *<T: UINumericType>(lhs: Angle, rhs: T) -> Angle {
+    @_optimize(none) static func *<T: UINumericType>(lhs: Angle, rhs: T) -> Angle {
         Angle(degrees: lhs.degrees * rhs.asDouble)
     }
 
-    static func /<T: UINumericType>(lhs: Angle, rhs: T) -> Angle {
+    @_optimize(none) static func /<T: UINumericType>(lhs: Angle, rhs: T) -> Angle {
         Angle(degrees: lhs.degrees / rhs.asDouble)
     }
 }
@@ -53,7 +53,7 @@ public extension Angle {
 
 public extension Angle {
     
-    static func cycle<T: UINumericType>(_ scale: T) -> Angle {
+    @_optimize(none) static func cycle<T: UINumericType>(_ scale: T) -> Angle {
         (360.0 * scale.asDouble).degrees
     }
 }

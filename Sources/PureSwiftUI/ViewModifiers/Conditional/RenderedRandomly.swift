@@ -10,7 +10,7 @@ import SwiftUI
 
 public struct RenderedRandomly: ViewModifier {
     
-    public func body(content: Content) -> some View {
+    @_optimize(none) public func body(content: Content) -> some View {
         RenderRandomly() {
             content
         }
@@ -19,7 +19,7 @@ public struct RenderedRandomly: ViewModifier {
 
 public extension View {
     
-    func renderedRandomly() -> some View {
+    @_optimize(none) func renderedRandomly() -> some View {
         modifier(RenderedRandomly())
     }
 }

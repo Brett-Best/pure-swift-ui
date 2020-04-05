@@ -11,7 +11,7 @@ import SwiftUI
 
 public extension Text {
     
-    func align(_ alignment: TextAlignment) -> some View {
+    @_optimize(none) func align(_ alignment: TextAlignment) -> some View {
         multilineTextAlignment(alignment)
     }
 }

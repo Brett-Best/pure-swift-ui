@@ -13,12 +13,12 @@ public struct DynamicallyScalingFontViewModifier: ViewModifier {
     var size: CGFloat
     var weight: Font.Weight?
 
-    public func body(content: Content) -> some View {
+    @_optimize(none) public func body(content: Content) -> some View {
         let scaledSize = UIFontMetrics.default.scaledValue(for: size)
         return content.font(createFont(scaledSize: scaledSize))
     }
     
-    private func createFont(scaledSize: CGFloat) -> Font {
+    @_optimize(none) private func createFont(scaledSize: CGFloat) -> Font {
         if let name = name {
             if let weight = weight {
                 return Font.custom(name, size: scaledSize).weight(weight)
@@ -36,7 +36,7 @@ public struct DynamicallyScalingFontViewModifier: ViewModifier {
 }
 
 public extension View {
-    func scalingFont<T: UINumericType>(size: T, name: String? = nil, weight: Font.Weight? = nil) -> some View {
+    @_optimize(none) func scalingFont<T: UINumericType>(size: T, name: String? = nil, weight: Font.Weight? = nil) -> some View {
         return self.modifier(DynamicallyScalingFontViewModifier(name: name, size: size.asCGFloat, weight: weight))
     }
 }

@@ -11,7 +11,7 @@ import SwiftUI
 
 public extension Text {
     
-    func foregroundColorIf(_ condition: Bool, _ color: Color) -> Text {
+    @_optimize(none) func foregroundColorIf(_ condition: Bool, _ color: Color) -> Text {
         foregroundColor(condition ? color : nil)
     }
 }

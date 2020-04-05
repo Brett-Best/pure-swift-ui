@@ -19,17 +19,17 @@ class CGAffineTransformConvenienceExtensionsTests: XCTestCase {
 
 extension CGAffineTransformConvenienceExtensionsTests {
     
-    func testRotation() {
+    @_optimize(none) func testRotation() {
         XCTAssertEqual(CGAffineTransform.rotation(angle), CGAffineTransform(rotationAngle: angle.radians.asCGFloat))
     }
     
-    func testTranslation() {
+    @_optimize(none) func testTranslation() {
         XCTAssertEqual(CGAffineTransform.translation(x, y), CGAffineTransform(translationX: x, y: y))
         XCTAssertEqual(CGAffineTransform.xTranslation(x), CGAffineTransform(translationX: x, y: 0))
         XCTAssertEqual(CGAffineTransform.yTranslation(y), CGAffineTransform(translationX: 0, y: y))
     }
 
-    func testScale() {
+    @_optimize(none) func testScale() {
         XCTAssertEqual(CGAffineTransform.scale(2, 0.5), CGAffineTransform(scaleX: 2, y: 0.5))
         XCTAssertEqual(CGAffineTransform.xScale(2), CGAffineTransform(scaleX: 2, y: 1))
         XCTAssertEqual(CGAffineTransform.yScale(0.5), CGAffineTransform(scaleX: 1, y: 0.5))

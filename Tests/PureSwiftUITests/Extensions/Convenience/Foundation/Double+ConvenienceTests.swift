@@ -10,7 +10,7 @@ import XCTest
 
 class DoubleConvenienceExtensionsTests: XCTestCase {
     
-    func testRandom() {
+    @_optimize(none) func testRandom() {
         
         let value: Double = 10
         

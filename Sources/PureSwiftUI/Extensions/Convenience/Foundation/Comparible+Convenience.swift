@@ -7,7 +7,7 @@
 
 public extension Comparable {
     
-    func clamped(from: Self, to: Self) -> Self {
+    @_optimize(none) func clamped(from: Self, to: Self) -> Self {
         if (self > to) {
             return to
         } else if (self < from) {

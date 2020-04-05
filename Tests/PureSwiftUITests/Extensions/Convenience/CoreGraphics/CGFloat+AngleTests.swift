@@ -14,43 +14,43 @@ class CGFloatAngleExtensionsTests: XCTestCase {
     let radiansValue: Double = 2
     let inverseValue: Double = 1
     
-    func testCGFloatAsDegrees() {
+    @_optimize(none) func testCGFloatAsDegrees() {
         let expectedResult = Angle.degrees(degreesValue)
         let result = CGFloat(degreesValue).degrees
         XCTAssertEqual(result, expectedResult)
     }
     
-    func testCGFloatAsRadians() {
+    @_optimize(none) func testCGFloatAsRadians() {
         let expectedResult = Angle.radians(radiansValue)
         let result = CGFloat(radiansValue).radians
         XCTAssertEqual(result, expectedResult)
     }
     
-    func testCGFloatDegreesAsRadians() {
+    @_optimize(none) func testCGFloatDegreesAsRadians() {
         let expectedResult = Angle.radians(Angle.degrees(degreesValue).radians)
         let result = CGFloat(degreesValue).degreesAsRadians
         XCTAssertEqual(result, expectedResult)
     }
     
-    func testCGFloatRadiansAsDegrees() {
+    @_optimize(none) func testCGFloatRadiansAsDegrees() {
         let expectedResult = Angle.degrees(Angle.radians(radiansValue).degrees)
         let result = CGFloat(radiansValue).radiansAsDegrees
         XCTAssertEqual(result, expectedResult)
     }
     
-    func testCGFloatACos() {
+    @_optimize(none) func testCGFloatACos() {
         let expectedResult = acos(inverseValue)
         let result = CGFloat(inverseValue).acos.radians
         XCTAssertEqual(result, expectedResult)
     }
     
-    func testCGFloatASin() {
+    @_optimize(none) func testCGFloatASin() {
         let expectedResult = asin(inverseValue)
         let result = CGFloat(inverseValue).asin.radians
         XCTAssertEqual(result, expectedResult)
     }
     
-    func testCGFloatATan() {
+    @_optimize(none) func testCGFloatATan() {
         let expectedResult = atan(inverseValue)
         let result = CGFloat(inverseValue).atan.radians
         XCTAssertEqual(result, expectedResult)

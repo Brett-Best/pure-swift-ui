@@ -22,7 +22,7 @@ class UIEdgeInsetsConvenienceExtensionsTests: XCTestCase {
 
 extension UIEdgeInsetsConvenienceExtensionsTests {
     
-    func testInit() {
+    @_optimize(none) func testInit() {
         XCTAssertEqual(UIEdgeInsets(width), UIEdgeInsets(top: width, left: width, bottom: width, right: width))
         XCTAssertEqual(UIEdgeInsets(width.asInt), UIEdgeInsets(top: width, left: width, bottom: width, right: width))
         XCTAssertEqual(UIEdgeInsets(width, height), UIEdgeInsets(top: height, left: width, bottom: height, right: width))

@@ -26,7 +26,7 @@ public extension FloatingPoint {
         return isPositive ? 0 : self
     }
     
-    func clamped(to: Self, spanZero: Bool = false) -> Self {
+    @_optimize(none) func clamped(to: Self, spanZero: Bool = false) -> Self {
         self.clamped(from: spanZero ? -to : 0, to: to)
     }
 }

@@ -12,7 +12,7 @@ public struct RenderRandomly<IfContent>: View where IfContent: View {
     let render = Bool.random()
     let ifContent: () -> IfContent
     
-    public init(@ViewBuilder content: @escaping () -> IfContent) {
+    @_optimize(none) public init(@ViewBuilder content: @escaping () -> IfContent) {
         self.ifContent = content
     }
     
@@ -22,7 +22,7 @@ public struct RenderRandomly<IfContent>: View where IfContent: View {
         }
     }
     
-    public func elseRender<ElseContent: View>(@ViewBuilder content elseContent: @escaping () -> ElseContent) -> some View {
+    @_optimize(none) public func elseRender<ElseContent: View>(@ViewBuilder content elseContent: @escaping () -> ElseContent) -> some View {
 
         RenderIf(render) {
             self.ifContent()

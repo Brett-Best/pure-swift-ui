@@ -18,7 +18,7 @@ class UnitPointConvenienceExtensionsTests: XCTestCase {
 
 extension UnitPointConvenienceExtensionsTests {
     
-    func testInit() {
+    @_optimize(none) func testInit() {
         XCTAssertEqual(UnitPoint(x, y), UnitPoint(x: x, y: y))
      }
 }
@@ -27,7 +27,7 @@ extension UnitPointConvenienceExtensionsTests {
 
 extension UnitPointConvenienceExtensionsTests {
     
-    func testAsCGPoint() {
+    @_optimize(none) func testAsCGPoint() {
         XCTAssertEqual(UnitPoint(0.3, 0.5).asCGPoint, CGPoint(0.3, 0.5))
     }
 }
@@ -36,7 +36,7 @@ extension UnitPointConvenienceExtensionsTests {
 
 extension UnitPointConvenienceExtensionsTests {
     
-    func testAsAngleForNamedUnitPoints() {
+    @_optimize(none) func testAsAngleForNamedUnitPoints() {
         XCTAssertEqual(UnitPoint.topLeading.asAngle, .topLeading)
         XCTAssertEqual(UnitPoint.top.asAngle, .top)
         XCTAssertEqual(UnitPoint.topTrailing.asAngle, .topTrailing)
@@ -47,7 +47,7 @@ extension UnitPointConvenienceExtensionsTests {
         XCTAssertEqual(UnitPoint.leading.asAngle, .leading)
     }
 
-    func testAsAngle() {
+    @_optimize(none) func testAsAngle() {
         assertEqual(UnitPoint(0.1, 0.1).asAngle.asUnitPoint, Angle.topLeading.asUnitPoint)
         assertEqual(UnitPoint(0.5, 0.1).asAngle.degrees, Angle.top.degrees)
         assertEqual(UnitPoint(0.9, 0.1).asAngle.degrees, Angle.topTrailing.degrees)
@@ -63,7 +63,7 @@ extension UnitPointConvenienceExtensionsTests {
 
 extension UnitPointConvenienceExtensionsTests {
     
-    func testInvertedForNamedUnitPoints() {
+    @_optimize(none) func testInvertedForNamedUnitPoints() {
         XCTAssertEqual(UnitPoint.topLeading.inverted(), .bottomTrailing)
         XCTAssertEqual(UnitPoint.top.inverted(), .bottom)
         XCTAssertEqual(UnitPoint.topTrailing.inverted(), .bottomLeading)
@@ -74,7 +74,7 @@ extension UnitPointConvenienceExtensionsTests {
         XCTAssertEqual(UnitPoint.leading.inverted(), .trailing)
     }
     
-    func testInverted() {
+    @_optimize(none) func testInverted() {
         assertEqual(UnitPoint(0.1, 0.1).inverted(), UnitPoint(0.9, 0.9))
         assertEqual(UnitPoint(0.5, 0.1).inverted(), UnitPoint(0.5, 0.9))
         assertEqual(UnitPoint(0.9, 0.1).inverted(), UnitPoint(0.1, 0.9))

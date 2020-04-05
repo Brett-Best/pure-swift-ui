@@ -13,7 +13,7 @@ public extension GeometryProxy {
         size.width
     }
     
-    func widthScaled<T: UINumericType>(_ scale: T) -> CGFloat {
+    @_optimize(none) func widthScaled<T: UINumericType>(_ scale: T) -> CGFloat {
         width * scale.asCGFloat
     }
     
@@ -21,7 +21,7 @@ public extension GeometryProxy {
         size.height
     }
     
-    func heightScaled<T: UINumericType>(_ scale: T) -> CGFloat {
+    @_optimize(none) func heightScaled<T: UINumericType>(_ scale: T) -> CGFloat {
         height * scale.asCGFloat
     }
     

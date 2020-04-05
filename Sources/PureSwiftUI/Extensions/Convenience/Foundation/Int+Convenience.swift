@@ -13,7 +13,7 @@ public extension Int {
         String(self)
     }
     
-    func clamped(to: Int, spanZero: Bool = false) -> Int {
+    @_optimize(none) func clamped(to: Int, spanZero: Bool = false) -> Int {
         self.clamped(from: spanZero ? -to : 0, to: to)
     }
 
@@ -41,7 +41,7 @@ public extension Int {
         !isEven
     }
     
-    func random() -> Int {
+    @_optimize(none) func random() -> Int {
         Int.random(in: 0...self)
     }
 }

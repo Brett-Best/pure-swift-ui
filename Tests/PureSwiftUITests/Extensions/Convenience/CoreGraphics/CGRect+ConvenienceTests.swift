@@ -52,7 +52,7 @@ class CGRectConvenienceExtensionsTests: XCTestCase {
 
 extension CGRectConvenienceExtensionsTests {
     
-    func testInit() {
+    @_optimize(none) func testInit() {
         XCTAssertEqual(CGRect(x, y, width, height), rect)
         XCTAssertEqual(CGRect(x.asDouble, y.asFloat, width.asCGFloat, height.asInt), rect)
         XCTAssertEqual(CGRect(width, height), CGRect(0, 0, width, height))
@@ -60,7 +60,7 @@ extension CGRectConvenienceExtensionsTests {
         XCTAssertEqual(CGRect(.point(x, y), .size(width, height)), rect)
     }
     
-    func testInitFromAndToPoint() {
+    @_optimize(none) func testInitFromAndToPoint() {
         XCTAssertEqual(CGRect(from: .point(x, y), to: .point(x + width, y + height)), rect)
     }
     
@@ -70,7 +70,7 @@ extension CGRectConvenienceExtensionsTests {
 
 extension CGRectConvenienceExtensionsTests {
     
-    func testRegionWithSize() {
+    @_optimize(none) func testRegionWithSize() {
         let expected = CGRect(rect.bottomTrailing.offset(CGPoint(-5, -5)), .square(5))
         
         XCTAssertEqual(CGRect(rect.bottomTrailing.x, rect.bottomTrailing.y, 5, 5, anchor: .bottomTrailing), expected)
@@ -85,7 +85,7 @@ extension CGRectConvenienceExtensionsTests {
 
 extension CGRectConvenienceExtensionsTests {
     
-    func testStaticInit() {
+    @_optimize(none) func testStaticInit() {
         XCTAssertEqual(CGRect.rect(.point(x, y), .size(width, height)), rect)
         XCTAssertEqual(CGRect.rect(x, y, width, height), rect)
     }
@@ -96,7 +96,7 @@ extension CGRectConvenienceExtensionsTests {
 extension CGRectConvenienceExtensionsTests {
     
     
-    func testDimensions() {
+    @_optimize(none) func testDimensions() {
         XCTAssertEqual(rect.center, CGPoint(midX, midY))
         XCTAssertEqual(rect.topLeading, CGPoint(x, y))
         XCTAssertEqual(rect.top, CGPoint(midX, y))
@@ -118,7 +118,7 @@ extension CGRectConvenienceExtensionsTests {
 
 extension CGRectConvenienceExtensionsTests {
     
-    func testClampedSize() {
+    @_optimize(none) func testClampedSize() {
         let expectedResult = CGSize(maxX, maxY)
         let result = CGRect(x, y, 0, 20).clampedSize(from: maxX.asInt, to: maxY.asDouble)
         
@@ -130,7 +130,7 @@ extension CGRectConvenienceExtensionsTests {
 
 extension CGRectConvenienceExtensionsTests {
     
-    func testScaled() {
+    @_optimize(none) func testScaled() {
         XCTAssertEqual(rect.widthScaled(0.5), width * 0.5)
         XCTAssertEqual(rect.heightScaled(0.5), height * 0.5)
         XCTAssertEqual(rect.xScaled(0.5), rect.midX)
@@ -147,7 +147,7 @@ extension CGRectConvenienceExtensionsTests {
 
 extension CGRectConvenienceExtensionsTests {
     
-    func testInset() {
+    @_optimize(none) func testInset() {
         let topInset: CGFloat = 1
         let leadingInset: CGFloat = 2
         let bottomInset: CGFloat = 3
@@ -188,7 +188,7 @@ extension CGRectConvenienceExtensionsTests {
 
 extension CGRectConvenienceExtensionsTests {
     
-    func testRegionWithScale() {
+    @_optimize(none) func testRegionWithScale() {
         XCTAssertEqual(rect.scaled(CGSize(0.5, 0.5), at: rect.bottomTrailing, anchor: .bottomTrailing),
                        CGRect(rect.bottomTrailing.offset(rect.sizeScaled(-0.5)), CGSize(4, 5)))
         XCTAssertEqual(rect.scaled(0.5, at: rect.bottomTrailing, anchor: .bottomTrailing),
@@ -204,7 +204,7 @@ extension CGRectConvenienceExtensionsTests {
 
 extension CGRectConvenienceExtensionsTests {
     
-    func testOffsetAnchor() {
+    @_optimize(none) func testOffsetAnchor() {
         XCTAssertEqual(rect.offset(anchor: .bottomTrailing), CGRect(x - width, y - height, width, height))
         XCTAssertEqual(rect.offset(anchor: UnitPoint(-0.5, -0.5)), CGRect(x + 4, y + 5, width, height))
         
@@ -224,7 +224,7 @@ extension CGRectConvenienceExtensionsTests {
 
 extension CGRectConvenienceExtensionsTests {
     
-    func testOffsetAnchorWithFactor() {
+    @_optimize(none) func testOffsetAnchorWithFactor() {
         XCTAssertEqual(rect.offset(anchor: .bottomTrailing, factor: 0.5), CGRect(x - width * 0.5, y - height * 0.5, width, height))
         XCTAssertEqual(rect.offset(anchor: .bottomTrailing, factor: .square(0.5)), CGRect(x - width * 0.5, y - height * 0.5, width, height))
         XCTAssertEqual(rect.offset(anchor: UnitPoint(-0.5, -0.5), factor: 0.5), CGRect(x + 2, y + 2.5, width, height))

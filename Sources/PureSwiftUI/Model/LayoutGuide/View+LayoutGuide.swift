@@ -7,19 +7,19 @@
 
 public extension View {
     
-    func layoutGuide(_ layoutGuideConfig: LayoutGuideConfig, color: Color = .gray) -> some View {
+    @_optimize(none) func layoutGuide(_ layoutGuideConfig: LayoutGuideConfig, color: Color = .gray) -> some View {
         modifier(LayoutViewModifier(layoutGuideConfig: layoutGuideConfig, attributes: LayoutOverlayAttributes(color: color)))
     }
     
-    func layoutGuide<TW: UINumericType>(_ layoutGuideConfig: LayoutGuideConfig, color: Color = .gray, lineWidth: TW) -> some View {
+    @_optimize(none) func layoutGuide<TW: UINumericType>(_ layoutGuideConfig: LayoutGuideConfig, color: Color = .gray, lineWidth: TW) -> some View {
         modifier(LayoutViewModifier(layoutGuideConfig: layoutGuideConfig, attributes: LayoutOverlayAttributes(color: color, lineWidth: lineWidth.asCGFloat)))
     }
     
-    func layoutGuide<TO: UINumericType>(_ layoutGuideConfig: LayoutGuideConfig, color: Color = .gray, opacity: TO) -> some View {
+    @_optimize(none) func layoutGuide<TO: UINumericType>(_ layoutGuideConfig: LayoutGuideConfig, color: Color = .gray, opacity: TO) -> some View {
         modifier(LayoutViewModifier(layoutGuideConfig: layoutGuideConfig, attributes: LayoutOverlayAttributes(color: color, opacity: opacity.asDouble)))
     }
     
-    func layoutGuide<TW: UINumericType, TO: UINumericType>(_ layoutGuideConfig: LayoutGuideConfig, color: Color = .gray, lineWidth: TW, opacity: TO) -> some View {
+    @_optimize(none) func layoutGuide<TW: UINumericType, TO: UINumericType>(_ layoutGuideConfig: LayoutGuideConfig, color: Color = .gray, lineWidth: TW, opacity: TO) -> some View {
         modifier(LayoutViewModifier(layoutGuideConfig: layoutGuideConfig, attributes: LayoutOverlayAttributes(color: color, lineWidth: lineWidth.asCGFloat, opacity: opacity.asDouble)))
     }
 }
@@ -29,7 +29,7 @@ private struct LayoutOverlayAttributes {
     let lineWidth: CGFloat
     let opacity: Double
     
-    init(color: Color = .gray, lineWidth: CGFloat = 0.5, opacity: Double = 0.5) {
+    @_optimize(none) init(color: Color = .gray, lineWidth: CGFloat = 0.5, opacity: Double = 0.5) {
         self.color = color
         self.lineWidth = lineWidth
         self.opacity = opacity
@@ -45,12 +45,12 @@ private struct LayoutViewModifier: ViewModifier {
     
     @Environment(\.showLayoutGuides) var showLayoutOverlays
     
-    init(layoutGuideConfig: LayoutGuideConfig, attributes: LayoutOverlayAttributes) {
+    @_optimize(none) init(layoutGuideConfig: LayoutGuideConfig, attributes: LayoutOverlayAttributes) {
         self.layoutGuideConfig = layoutGuideConfig
         self.attributes = attributes
     }
     
-    func body(content: Content) -> some View {
+    @_optimize(none) func body(content: Content) -> some View {
         RenderIf(showLayoutOverlays) {
             content
                 .geometryReader { (geo: GeometryProxy) in

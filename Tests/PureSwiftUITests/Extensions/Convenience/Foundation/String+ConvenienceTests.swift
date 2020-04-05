@@ -16,7 +16,7 @@ class StringConvenienceExtensionsTests: XCTestCase {
 // MARK: ----- NOT EMPTY
 
 extension StringConvenienceExtensionsTests {
-    func testIsNotEmpty() {
+    @_optimize(none) func testIsNotEmpty() {
         XCTAssertTrue("hello".isNotEmpty)
     }
 }

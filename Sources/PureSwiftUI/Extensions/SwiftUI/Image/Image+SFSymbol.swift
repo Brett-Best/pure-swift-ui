@@ -9,11 +9,11 @@ import SwiftUI
 
 public extension Image {
     
-    init(sfSymbol sfsymbol: SFSymbolName) {
+    @_optimize(none) init(sfSymbol sfsymbol: SFSymbolName) {
         self.init(sfSymbol: sfsymbol.rawValue)
     }
 
-    init(sfSymbol sfsymbolName: String) {
+    @_optimize(none) init(sfSymbol sfsymbolName: String) {
         self.init(systemName: sfsymbolName)
     }
 }

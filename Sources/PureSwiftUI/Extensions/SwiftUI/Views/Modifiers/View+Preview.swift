@@ -52,12 +52,12 @@ private struct PreviewDeviceModifier: ViewModifier {
     let previewDeviceName: PreviewDeviceName
     let displayName: String
     
-    init(_ previewDeviceName: PreviewDeviceName, _ displayName: String) {
+    @_optimize(none) init(_ previewDeviceName: PreviewDeviceName, _ displayName: String) {
         self.previewDeviceName = previewDeviceName
         self.displayName = displayName
     }
     
-    func body(content: Content) -> some View {
+    @_optimize(none) func body(content: Content) -> some View {
         content
             .previewDevice(PreviewDevice(rawValue: previewDeviceName.rawValue))
             .previewDisplayName(displayName)
@@ -66,11 +66,11 @@ private struct PreviewDeviceModifier: ViewModifier {
 
 public extension View {
     
-    func previewDevice(_ previewDeviceName: PreviewDeviceName) -> some View {
+    @_optimize(none) func previewDevice(_ previewDeviceName: PreviewDeviceName) -> some View {
         modifier(PreviewDeviceModifier(previewDeviceName, previewDeviceName.rawValue))
     }
 
-    func previewDevice(_ previewDeviceName: PreviewDeviceName, displayName: String) -> some View {
+    @_optimize(none) func previewDevice(_ previewDeviceName: PreviewDeviceName, displayName: String) -> some View {
         modifier(PreviewDeviceModifier(previewDeviceName, displayName))
     }
 }
@@ -81,11 +81,11 @@ private struct PreviewLayoutModifier: ViewModifier {
     
     let previewLayout: PreviewLayout
     
-    init(_ previewLayout: PreviewLayout) {
+    @_optimize(none) init(_ previewLayout: PreviewLayout) {
         self.previewLayout = previewLayout
     }
     
-    func body(content: Content) -> some View {
+    @_optimize(none) func body(content: Content) -> some View {
         content
             .previewLayout(previewLayout)
     }
@@ -93,19 +93,19 @@ private struct PreviewLayoutModifier: ViewModifier {
 
 public extension View {
     
-    func previewSizeThatFits() -> some View {
+    @_optimize(none) func previewSizeThatFits() -> some View {
         modifier(PreviewLayoutModifier(.sizeThatFits))
     }
     
-    func previewFixedSize(_ size: CGSize) -> some View {
+    @_optimize(none) func previewFixedSize(_ size: CGSize) -> some View {
         modifier(PreviewLayoutModifier(.fixed(width: size.width, height: size.height)))
     }
     
-    func previewFixedSize<T: UINumericType>(_ size: T) -> some View {
+    @_optimize(none) func previewFixedSize<T: UINumericType>(_ size: T) -> some View {
         modifier(PreviewLayoutModifier(.fixed(width: size.asCGFloat, height: size.asCGFloat)))
     }
     
-    func previewFixedSize<TX: UINumericType, TY: UINumericType>(_ x: TX, _ y: TY) -> some View {
+    @_optimize(none) func previewFixedSize<TX: UINumericType, TY: UINumericType>(_ x: TX, _ y: TY) -> some View {
         modifier(PreviewLayoutModifier(.fixed(width: x.asCGFloat, height: y.asCGFloat)))
     }
 }

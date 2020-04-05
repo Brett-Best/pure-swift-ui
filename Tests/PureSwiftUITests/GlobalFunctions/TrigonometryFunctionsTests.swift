@@ -17,15 +17,15 @@ class TrigonometryFunctionsTests: XCTestCase {
 
 extension TrigonometryFunctionsTests {
     
-    func testSin() {
+    @_optimize(none) func testSin() {
         XCTAssertEqual(sin(30.degrees), sin(Angle.degrees(30).radians))
     }
 
-    func testCos() {
+    @_optimize(none) func testCos() {
         XCTAssertEqual(cos(30.degrees), cos(Angle.degrees(30).radians))
     }
 
-    func testTan() {
+    @_optimize(none) func testTan() {
         XCTAssertEqual(tan(30.degrees), tan(Angle.degrees(30).radians))
     }
 }

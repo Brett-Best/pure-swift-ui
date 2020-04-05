@@ -41,11 +41,11 @@ public extension EnvironmentValues {
 
 public extension View {
     
-    func showLayoutGuides(_ value: Bool) -> some View {
+    @_optimize(none) func showLayoutGuides(_ value: Bool) -> some View {
         environment(\.showLayoutGuides, value)
     }
     
-    func showControlPoints(_ value: Bool) -> some View {
+    @_optimize(none) func showControlPoints(_ value: Bool) -> some View {
         environment(\.showControlPoints, value)
     }
 }

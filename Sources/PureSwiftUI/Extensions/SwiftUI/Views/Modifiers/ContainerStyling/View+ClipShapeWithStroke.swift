@@ -10,42 +10,42 @@
 
 public extension View {
     
-    func clipCapsuleWithStroke<SS: ShapeStyle, TLW: UINumericType>(_ content: SS, lineWidth: TLW, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipCapsuleWithStroke<SS: ShapeStyle, TLW: UINumericType>(_ content: SS, lineWidth: TLW, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipCapsule()
             .strokeCapsule(content, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipCapsuleWithStroke<SS: ShapeStyle, TLW: UINumericType, FSS: ShapeStyle>(_ content: SS, lineWidth: TLW, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipCapsuleWithStroke<SS: ShapeStyle, TLW: UINumericType, FSS: ShapeStyle>(_ content: SS, lineWidth: TLW, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipCapsule(fill: fill, fillStyle: fillStyle)
             .strokeCapsule(content, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipCapsuleWithStroke<SS: ShapeStyle>(_ content: SS, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipCapsuleWithStroke<SS: ShapeStyle>(_ content: SS, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipCapsule()
             .strokeCapsule(content, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipCapsuleWithStroke<SS: ShapeStyle, FSS: ShapeStyle>(_ content: SS, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipCapsuleWithStroke<SS: ShapeStyle, FSS: ShapeStyle>(_ content: SS, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipCapsule(fill: fill, fillStyle: fillStyle)
             .strokeCapsule(content, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipCapsuleWithStroke<TLW: UINumericType>(_ color: Color, lineWidth: TLW, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipCapsuleWithStroke<TLW: UINumericType>(_ color: Color, lineWidth: TLW, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipCapsule()
             .strokeCapsule(color, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipCapsuleWithStroke<TLW: UINumericType, FSS: ShapeStyle>(_ color: Color, lineWidth: TLW, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipCapsuleWithStroke<TLW: UINumericType, FSS: ShapeStyle>(_ color: Color, lineWidth: TLW, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipCapsule(fill: fill, fillStyle: fillStyle)
             .strokeCapsule(color, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipCapsuleWithStroke(_ color: Color, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipCapsuleWithStroke(_ color: Color, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipCapsule()
             .strokeCapsule(color, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
 
-    func clipCapsuleWithStroke<FSS: ShapeStyle>(_ color: Color, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipCapsuleWithStroke<FSS: ShapeStyle>(_ color: Color, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipCapsule(fill: fill, fillStyle: fillStyle)
             .strokeCapsule(color, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
@@ -55,42 +55,42 @@ public extension View {
 
 public extension View {
     
-    func clipCircleWithStroke<SS: ShapeStyle, TLW: UINumericType>(_ content: SS, lineWidth: TLW, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipCircleWithStroke<SS: ShapeStyle, TLW: UINumericType>(_ content: SS, lineWidth: TLW, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipCircle()
             .strokeCircle(content, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipCircleWithStroke<SS: ShapeStyle, TLW: UINumericType, FSS: ShapeStyle>(_ content: SS, lineWidth: TLW, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipCircleWithStroke<SS: ShapeStyle, TLW: UINumericType, FSS: ShapeStyle>(_ content: SS, lineWidth: TLW, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipCircle(fill: fill, fillStyle: fillStyle)
             .strokeCircle(content, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipCircleWithStroke<SS: ShapeStyle>(_ content: SS, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipCircleWithStroke<SS: ShapeStyle>(_ content: SS, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipCircle()
             .strokeCircle(content, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipCircleWithStroke<SS: ShapeStyle, FSS: ShapeStyle>(_ content: SS, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipCircleWithStroke<SS: ShapeStyle, FSS: ShapeStyle>(_ content: SS, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipCircle(fill: fill, fillStyle: fillStyle)
             .strokeCircle(content, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipCircleWithStroke<TLW: UINumericType>(_ color: Color, lineWidth: TLW, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipCircleWithStroke<TLW: UINumericType>(_ color: Color, lineWidth: TLW, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipCircle()
             .strokeCircle(color, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipCircleWithStroke<TLW: UINumericType, FSS: ShapeStyle>(_ color: Color, lineWidth: TLW, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipCircleWithStroke<TLW: UINumericType, FSS: ShapeStyle>(_ color: Color, lineWidth: TLW, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipCircle(fill: fill, fillStyle: fillStyle)
             .strokeCircle(color, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipCircleWithStroke(_ color: Color, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipCircleWithStroke(_ color: Color, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipCircle()
             .strokeCircle(color, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
 
-    func clipCircleWithStroke<FSS: ShapeStyle>(_ color: Color, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipCircleWithStroke<FSS: ShapeStyle>(_ color: Color, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipCircle(fill: fill, fillStyle: fillStyle)
             .strokeCircle(color, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
@@ -101,42 +101,42 @@ public extension View {
 
 public extension View {
     
-    func clipEllipseWithStroke<SS: ShapeStyle, TLW: UINumericType>(_ content: SS, lineWidth: TLW, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipEllipseWithStroke<SS: ShapeStyle, TLW: UINumericType>(_ content: SS, lineWidth: TLW, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipEllipse()
             .strokeEllipse(content, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipEllipseWithStroke<SS: ShapeStyle, TLW: UINumericType, FSS: ShapeStyle>(_ content: SS, lineWidth: TLW, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipEllipseWithStroke<SS: ShapeStyle, TLW: UINumericType, FSS: ShapeStyle>(_ content: SS, lineWidth: TLW, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipEllipse(fill: fill, fillStyle: fillStyle)
             .strokeEllipse(content, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipEllipseWithStroke<SS: ShapeStyle>(_ content: SS, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipEllipseWithStroke<SS: ShapeStyle>(_ content: SS, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipEllipse()
             .strokeEllipse(content, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipEllipseWithStroke<SS: ShapeStyle, FSS: ShapeStyle>(_ content: SS, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipEllipseWithStroke<SS: ShapeStyle, FSS: ShapeStyle>(_ content: SS, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipEllipse(fill: fill, fillStyle: fillStyle)
             .strokeEllipse(content, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipEllipseWithStroke<TLW: UINumericType>(_ color: Color, lineWidth: TLW, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipEllipseWithStroke<TLW: UINumericType>(_ color: Color, lineWidth: TLW, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipEllipse()
             .strokeEllipse(color, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipEllipseWithStroke<TLW: UINumericType, FSS: ShapeStyle>(_ color: Color, lineWidth: TLW, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipEllipseWithStroke<TLW: UINumericType, FSS: ShapeStyle>(_ color: Color, lineWidth: TLW, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipEllipse(fill: fill, fillStyle: fillStyle)
             .strokeEllipse(color, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipEllipseWithStroke(_ color: Color, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipEllipseWithStroke(_ color: Color, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipEllipse()
             .strokeEllipse(color, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
 
-    func clipEllipseWithStroke<FSS: ShapeStyle>(_ color: Color, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipEllipseWithStroke<FSS: ShapeStyle>(_ color: Color, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipEllipse(fill: fill, fillStyle: fillStyle)
             .strokeEllipse(color, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
@@ -146,42 +146,42 @@ public extension View {
 
 public extension View {
     
-    func clipRectangleWithStroke<SS: ShapeStyle, TLW: UINumericType>(_ content: SS, lineWidth: TLW, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRectangleWithStroke<SS: ShapeStyle, TLW: UINumericType>(_ content: SS, lineWidth: TLW, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipRectangle()
             .strokeRectangle(content, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipRectangleWithStroke<SS: ShapeStyle, TLW: UINumericType, FSS: ShapeStyle>(_ content: SS, lineWidth: TLW, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRectangleWithStroke<SS: ShapeStyle, TLW: UINumericType, FSS: ShapeStyle>(_ content: SS, lineWidth: TLW, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipRectangle(fill: fill, fillStyle: fillStyle)
             .strokeRectangle(content, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipRectangleWithStroke<SS: ShapeStyle>(_ content: SS, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRectangleWithStroke<SS: ShapeStyle>(_ content: SS, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipRectangle()
             .strokeRectangle(content, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipRectangleWithStroke<SS: ShapeStyle, FSS: ShapeStyle>(_ content: SS, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRectangleWithStroke<SS: ShapeStyle, FSS: ShapeStyle>(_ content: SS, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipRectangle(fill: fill, fillStyle: fillStyle)
             .strokeRectangle(content, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipRectangleWithStroke<TLW: UINumericType>(_ color: Color, lineWidth: TLW, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRectangleWithStroke<TLW: UINumericType>(_ color: Color, lineWidth: TLW, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipRectangle()
             .strokeRectangle(color, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipRectangleWithStroke<TLW: UINumericType, FSS: ShapeStyle>(_ color: Color, lineWidth: TLW, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRectangleWithStroke<TLW: UINumericType, FSS: ShapeStyle>(_ color: Color, lineWidth: TLW, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipRectangle(fill: fill, fillStyle: fillStyle)
             .strokeRectangle(color, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipRectangleWithStroke(_ color: Color, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRectangleWithStroke(_ color: Color, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipRectangle()
             .strokeRectangle(color, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
 
-    func clipRectangleWithStroke<FSS: ShapeStyle>(_ color: Color, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRectangleWithStroke<FSS: ShapeStyle>(_ color: Color, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipRectangle(fill: fill, fillStyle: fillStyle)
             .strokeRectangle(color, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
@@ -191,42 +191,42 @@ public extension View {
 
 public extension View {
 
-    func clipRoundedRectangleWithStroke<TR: UINumericType, SS: ShapeStyle, TLW: UINumericType>(_ cornerRadius: TR, _ content: SS, lineWidth: TLW, cornerStyle: RoundedCornerStyle = .circular, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRoundedRectangleWithStroke<TR: UINumericType, SS: ShapeStyle, TLW: UINumericType>(_ cornerRadius: TR, _ content: SS, lineWidth: TLW, cornerStyle: RoundedCornerStyle = .circular, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipRoundedRectangle(cornerRadius, cornerStyle: cornerStyle)
             .strokeRoundedRectangle(cornerRadius, content, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipRoundedRectangleWithStroke<TR: UINumericType, SS: ShapeStyle, TLW: UINumericType, FSS: ShapeStyle>(_ cornerRadius: TR, _ content: SS, lineWidth: TLW, cornerStyle: RoundedCornerStyle = .circular, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRoundedRectangleWithStroke<TR: UINumericType, SS: ShapeStyle, TLW: UINumericType, FSS: ShapeStyle>(_ cornerRadius: TR, _ content: SS, lineWidth: TLW, cornerStyle: RoundedCornerStyle = .circular, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipRoundedRectangle(cornerRadius, cornerStyle: cornerStyle, fill: fill, fillStyle: fillStyle)
             .strokeRoundedRectangle(cornerRadius, content, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipRoundedRectangleWithStroke<TR: UINumericType, SS: ShapeStyle>(_ cornerRadius: TR, _ content: SS, cornerStyle: RoundedCornerStyle = .circular, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRoundedRectangleWithStroke<TR: UINumericType, SS: ShapeStyle>(_ cornerRadius: TR, _ content: SS, cornerStyle: RoundedCornerStyle = .circular, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipRoundedRectangle(cornerRadius, cornerStyle: cornerStyle)
             .strokeRoundedRectangle(cornerRadius, content, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
    
-    func clipRoundedRectangleWithStroke<TR: UINumericType, SS: ShapeStyle, FSS: ShapeStyle>(_ cornerRadius: TR, _ content: SS, cornerStyle: RoundedCornerStyle = .circular, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRoundedRectangleWithStroke<TR: UINumericType, SS: ShapeStyle, FSS: ShapeStyle>(_ cornerRadius: TR, _ content: SS, cornerStyle: RoundedCornerStyle = .circular, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipRoundedRectangle(cornerRadius, cornerStyle: cornerStyle, fill: fill, fillStyle: fillStyle)
             .strokeRoundedRectangle(cornerRadius, content, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipRoundedRectangleWithStroke<TR: UINumericType, TLW: UINumericType>(_ cornerRadius: TR, _ color: Color, lineWidth: TLW, cornerStyle: RoundedCornerStyle = .circular, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRoundedRectangleWithStroke<TR: UINumericType, TLW: UINumericType>(_ cornerRadius: TR, _ color: Color, lineWidth: TLW, cornerStyle: RoundedCornerStyle = .circular, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipRoundedRectangle(cornerRadius, cornerStyle: cornerStyle)
             .strokeRoundedRectangle(cornerRadius, color, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipRoundedRectangleWithStroke<TR: UINumericType, TLW: UINumericType, FSS: ShapeStyle>(_ cornerRadius: TR, _ color: Color, lineWidth: TLW, cornerStyle: RoundedCornerStyle = .circular, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRoundedRectangleWithStroke<TR: UINumericType, TLW: UINumericType, FSS: ShapeStyle>(_ cornerRadius: TR, _ color: Color, lineWidth: TLW, cornerStyle: RoundedCornerStyle = .circular, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipRoundedRectangle(cornerRadius, cornerStyle: cornerStyle, fill: fill, fillStyle: fillStyle)
             .strokeRoundedRectangle(cornerRadius, color, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipRoundedRectangleWithStroke<TR: UINumericType>(_ cornerRadius: TR, _ color: Color, strokeStyle: StrokeStyle, cornerStyle: RoundedCornerStyle = .circular, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRoundedRectangleWithStroke<TR: UINumericType>(_ cornerRadius: TR, _ color: Color, strokeStyle: StrokeStyle, cornerStyle: RoundedCornerStyle = .circular, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipRoundedRectangle(cornerRadius, cornerStyle: cornerStyle)
             .strokeRoundedRectangle(cornerRadius, color, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipRoundedRectangleWithStroke<TR: UINumericType, FSS: ShapeStyle>(_ cornerRadius: TR, _ color: Color, strokeStyle: StrokeStyle, cornerStyle: RoundedCornerStyle = .circular, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRoundedRectangleWithStroke<TR: UINumericType, FSS: ShapeStyle>(_ cornerRadius: TR, _ color: Color, strokeStyle: StrokeStyle, cornerStyle: RoundedCornerStyle = .circular, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipRoundedRectangle(cornerRadius, cornerStyle: cornerStyle, fill: fill, fillStyle: fillStyle)
             .strokeRoundedRectangle(cornerRadius, color, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
@@ -236,42 +236,42 @@ public extension View {
 
 public extension View {
 
-    func clipRoundedRectangleWithStroke<SS: ShapeStyle, TLW: UINumericType>(_ cornerSize: CGSize, _ content: SS, lineWidth: TLW, cornerStyle: RoundedCornerStyle = .circular, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRoundedRectangleWithStroke<SS: ShapeStyle, TLW: UINumericType>(_ cornerSize: CGSize, _ content: SS, lineWidth: TLW, cornerStyle: RoundedCornerStyle = .circular, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipRoundedRectangle(cornerSize, cornerStyle: cornerStyle)
             .strokeRoundedRectangle(cornerSize, content, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
 
-    func clipRoundedRectangleWithStroke<SS: ShapeStyle, TLW: UINumericType, FSS: ShapeStyle>(_ cornerSize: CGSize, _ content: SS, lineWidth: TLW, cornerStyle: RoundedCornerStyle = .circular, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRoundedRectangleWithStroke<SS: ShapeStyle, TLW: UINumericType, FSS: ShapeStyle>(_ cornerSize: CGSize, _ content: SS, lineWidth: TLW, cornerStyle: RoundedCornerStyle = .circular, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipRoundedRectangle(cornerSize, cornerStyle: cornerStyle, fill: fill, fillStyle: fillStyle)
             .strokeRoundedRectangle(cornerSize, content, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipRoundedRectangleWithStroke<SS: ShapeStyle>(_ cornerSize: CGSize, _ content: SS, cornerStyle: RoundedCornerStyle = .circular, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRoundedRectangleWithStroke<SS: ShapeStyle>(_ cornerSize: CGSize, _ content: SS, cornerStyle: RoundedCornerStyle = .circular, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipRoundedRectangle(cornerSize, cornerStyle: cornerStyle)
             .strokeRoundedRectangle(cornerSize, content, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
 
-    func clipRoundedRectangleWithStroke<SS: ShapeStyle, FSS: ShapeStyle>(_ cornerSize: CGSize, _ content: SS, cornerStyle: RoundedCornerStyle = .circular, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRoundedRectangleWithStroke<SS: ShapeStyle, FSS: ShapeStyle>(_ cornerSize: CGSize, _ content: SS, cornerStyle: RoundedCornerStyle = .circular, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipRoundedRectangle(cornerSize, cornerStyle: cornerStyle, fill: fill, fillStyle: fillStyle)
             .strokeRoundedRectangle(cornerSize, content, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipRoundedRectangleWithStroke<TLW: UINumericType>(_ cornerSize: CGSize, _ color: Color, lineWidth: TLW, cornerStyle: RoundedCornerStyle = .circular, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRoundedRectangleWithStroke<TLW: UINumericType>(_ cornerSize: CGSize, _ color: Color, lineWidth: TLW, cornerStyle: RoundedCornerStyle = .circular, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipRoundedRectangle(cornerSize, cornerStyle: cornerStyle)
             .strokeRoundedRectangle(cornerSize, color, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
 
-    func clipRoundedRectangleWithStroke<TLW: UINumericType, FSS: ShapeStyle>(_ cornerSize: CGSize, _ color: Color, lineWidth: TLW, cornerStyle: RoundedCornerStyle = .circular, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRoundedRectangleWithStroke<TLW: UINumericType, FSS: ShapeStyle>(_ cornerSize: CGSize, _ color: Color, lineWidth: TLW, cornerStyle: RoundedCornerStyle = .circular, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipRoundedRectangle(cornerSize, cornerStyle: cornerStyle, fill: fill, fillStyle: fillStyle)
             .strokeRoundedRectangle(cornerSize, color, lineWidth: lineWidth, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipRoundedRectangleWithStroke(_ cornerSize: CGSize, _ color: Color, cornerStyle: RoundedCornerStyle = .circular, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRoundedRectangleWithStroke(_ cornerSize: CGSize, _ color: Color, cornerStyle: RoundedCornerStyle = .circular, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, constrainGestures: Bool = true) -> some View {
         clipRoundedRectangle(cornerSize, cornerStyle: cornerStyle)
             .strokeRoundedRectangle(cornerSize, color, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
     
-    func clipRoundedRectangleWithStroke<FSS: ShapeStyle>(_ cornerSize: CGSize, _ color: Color, cornerStyle: RoundedCornerStyle = .circular, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
+    @_optimize(none) func clipRoundedRectangleWithStroke<FSS: ShapeStyle>(_ cornerSize: CGSize, _ color: Color, cornerStyle: RoundedCornerStyle = .circular, strokeStyle: StrokeStyle, strokeType: ShapeStrokeType = .center, fill: FSS, fillStyle: FillStyle = FillStyle(), constrainGestures: Bool = true) -> some View {
         clipRoundedRectangle(cornerSize, cornerStyle: cornerStyle, fill: fill, fillStyle: fillStyle)
             .strokeRoundedRectangle(cornerSize, color, strokeStyle: strokeStyle, strokeType: strokeType, constrainGestures: constrainGestures)
     }
